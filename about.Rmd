@@ -1,0 +1,38 @@
+---
+title: "Łukasz Wawrowski"
+image: "photo.jpg"
+links:
+  - label: LinkedIn
+    url: "https://www.linkedin.com/in/%c5%82ukasz-wawrowski-2b106a149/"
+  - label: Twitter
+    url: "https://twitter.com/wawrluk"
+  - label: GitHub
+    url: "https://github.com/lwawrowski"
+  - label: Email
+    url: "mailto:lukasz[dot]wawrowski[at]outlook[dot]com"
+output:
+  postcards::trestles
+---
+ 
+## Interests
+
+- machine learning
+- explainable artificial intelligence
+- small area estimation
+- poverty analysis
+
+## Current employment
+
+**[QED Software](https://qed.pl/)** | Expert  
+
+**[Research Network Łukasiewicz](https://ibemag.pl/pl/)** | Data analyst 
+
+## Education
+
+**Poznań University of Economics and Business** 
+
+Ph.D. in statistics | September 2013 - October 2017
+
+**Poznań University of Economics and Business** 
+
+B.Sc & M.Sc. in informatics and econometrics | September 2008 - July 2013

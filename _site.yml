@@ -1,0 +1,21 @@
+name: "website"
+title: "Łukasz Wawrowski"
+theme: lw_theme.css
+description: |
+  Blog
+output_dir: "_site"
+google_analytics: "UA-49771039-5"
+navbar:
+  search: false
+  right:
+    - text: "Blog"
+      href: index.html
+    - text: "Publikacje"
+      href: publikacje.html
+    - text: "Projekty"
+      href: projekty.html
+    - text: "Dydaktyka"
+      href: dydaktyka.html
+    - text: "O mnie"
+      href: about.html
+output: distill::distill_article
