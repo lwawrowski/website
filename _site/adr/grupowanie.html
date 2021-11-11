@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Grupowanie | Metody przetwarzania i analizy danych w R</title>
+  <meta name="description" content="Materiały dydaktyczne do kursu Metody przetwarzania i analizy danych w R." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Grupowanie | Metody przetwarzania i analizy danych w R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Materiały dydaktyczne do kursu Metody przetwarzania i analizy danych w R." />
+  <meta name="github-repo" content="lwawrowski/analiza-danych-R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Grupowanie | Metody przetwarzania i analizy danych w R" />
+  
+  <meta name="twitter:description" content="Materiały dydaktyczne do kursu Metody przetwarzania i analizy danych w R." />
+  
+
+<meta name="author" content="Łukasz Wawrowski" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="regresja.html"/>
+<link rel="next" href="klasyfikacja.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Metody przetwarzania i analizy danych w R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Literatura</a></li>
+<li class="chapter" data-level="1" data-path="analiza-opisowa.html"><a href="analiza-opisowa.html"><i class="fa fa-check"></i><b>1</b> Analiza opisowa</a><ul>
+<li class="chapter" data-level="1.1" data-path="analiza-opisowa.html"><a href="analiza-opisowa.html#wprowadzenie"><i class="fa fa-check"></i><b>1.1</b> Wprowadzenie</a></li>
+<li class="chapter" data-level="1.2" data-path="analiza-opisowa.html"><a href="analiza-opisowa.html#eksploracyjna-analiza-danych"><i class="fa fa-check"></i><b>1.2</b> Eksploracyjna analiza danych</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html"><i class="fa fa-check"></i><b>2</b> Testowanie hipotez</a><ul>
+<li class="chapter" data-level="2.1" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#wprowadzenie-1"><i class="fa fa-check"></i><b>2.1</b> Wprowadzenie</a></li>
+<li class="chapter" data-level="2.2" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#hipoteza-statystyczna"><i class="fa fa-check"></i><b>2.2</b> Hipoteza statystyczna</a></li>
+<li class="chapter" data-level="2.3" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#poziom-istotności-i-wartość-p"><i class="fa fa-check"></i><b>2.3</b> Poziom istotności i wartość p</a></li>
+<li class="chapter" data-level="2.4" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#testy-statystyczne"><i class="fa fa-check"></i><b>2.4</b> Testy statystyczne</a></li>
+<li class="chapter" data-level="2.5" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#zbiór-danych"><i class="fa fa-check"></i><b>2.5</b> Zbiór danych</a></li>
+<li class="chapter" data-level="2.6" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#test-niezależności"><i class="fa fa-check"></i><b>2.6</b> Test niezależności</a></li>
+<li class="chapter" data-level="2.7" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#test-proporcji"><i class="fa fa-check"></i><b>2.7</b> Test proporcji</a></li>
+<li class="chapter" data-level="2.8" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#testowanie-normalności---test-shapiro-wilka"><i class="fa fa-check"></i><b>2.8</b> Testowanie normalności - test Shapiro-Wilka</a></li>
+<li class="chapter" data-level="2.9" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#testowanie-normalności---wykres-kwantyl-kwantyl"><i class="fa fa-check"></i><b>2.9</b> Testowanie normalności - wykres kwantyl-kwantyl</a></li>
+<li class="chapter" data-level="2.10" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#testowanie-wariancji---test-bartletta"><i class="fa fa-check"></i><b>2.10</b> Testowanie wariancji - test Bartletta</a></li>
+<li class="chapter" data-level="2.11" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#testowanie-średnich"><i class="fa fa-check"></i><b>2.11</b> Testowanie średnich</a><ul>
+<li class="chapter" data-level="2.11.1" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#test-t-średnich"><i class="fa fa-check"></i><b>2.11.1</b> Test t-średnich</a></li>
+<li class="chapter" data-level="2.11.2" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#anova"><i class="fa fa-check"></i><b>2.11.2</b> ANOVA</a></li>
+<li class="chapter" data-level="2.11.3" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#test-wilcoxona"><i class="fa fa-check"></i><b>2.11.3</b> Test Wilcoxona</a></li>
+<li class="chapter" data-level="2.11.4" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#test-kruskala-wallisa"><i class="fa fa-check"></i><b>2.11.4</b> Test Kruskala-Wallisa</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="regresja.html"><a href="regresja.html"><i class="fa fa-check"></i><b>3</b> Regresja</a><ul>
+<li class="chapter" data-level="3.1" data-path="regresja.html"><a href="regresja.html#wprowadzenie-2"><i class="fa fa-check"></i><b>3.1</b> Wprowadzenie</a></li>
+<li class="chapter" data-level="3.2" data-path="regresja.html"><a href="regresja.html#regresja-prosta"><i class="fa fa-check"></i><b>3.2</b> Regresja prosta</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="regresja.html"><a href="regresja.html#zadanie"><i class="fa fa-check"></i><b>3.2.1</b> Zadanie</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="regresja.html"><a href="regresja.html#regresja-wieloraka"><i class="fa fa-check"></i><b>3.3</b> Regresja wieloraka</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="regresja.html"><a href="regresja.html#zadanie-1"><i class="fa fa-check"></i><b>3.3.1</b> Zadanie</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="grupowanie.html"><a href="grupowanie.html"><i class="fa fa-check"></i><b>4</b> Grupowanie</a><ul>
+<li class="chapter" data-level="4.1" data-path="grupowanie.html"><a href="grupowanie.html#wprowadzenie-3"><i class="fa fa-check"></i><b>4.1</b> Wprowadzenie</a></li>
+<li class="chapter" data-level="4.2" data-path="grupowanie.html"><a href="grupowanie.html#metoda-k-średnich"><i class="fa fa-check"></i><b>4.2</b> Metoda k-średnich</a></li>
+<li class="chapter" data-level="4.3" data-path="grupowanie.html"><a href="grupowanie.html#metoda-hierarchiczna"><i class="fa fa-check"></i><b>4.3</b> Metoda hierarchiczna</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="grupowanie.html"><a href="grupowanie.html#zadania"><i class="fa fa-check"></i><b>4.3.1</b> Zadania</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="klasyfikacja.html"><a href="klasyfikacja.html"><i class="fa fa-check"></i><b>5</b> Klasyfikacja</a><ul>
+<li class="chapter" data-level="5.1" data-path="klasyfikacja.html"><a href="klasyfikacja.html#wprowadzenie-4"><i class="fa fa-check"></i><b>5.1</b> Wprowadzenie</a></li>
+<li class="chapter" data-level="5.2" data-path="klasyfikacja.html"><a href="klasyfikacja.html#drzewa-decyzyjne"><i class="fa fa-check"></i><b>5.2</b> Drzewa decyzyjne</a></li>
+<li class="chapter" data-level="5.3" data-path="klasyfikacja.html"><a href="klasyfikacja.html#gradient-boosting-machine"><i class="fa fa-check"></i><b>5.3</b> Gradient Boosting Machine</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="klasyfikacja.html"><a href="klasyfikacja.html#zadania-1"><i class="fa fa-check"></i><b>5.3.1</b> Zadania</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Metody przetwarzania i analizy danych w R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="grupowanie" class="section level1">
+<h1><span class="header-section-number">4</span> Grupowanie</h1>
+<p><a href="presentations/05_grupowanie.html">Prezentacja</a></p>
+<div id="wprowadzenie-3" class="section level2">
+<h2><span class="header-section-number">4.1</span> Wprowadzenie</h2>
+<p>Grupowanie polega na przypisanie obiektów do określonych grup/klastrów/skupień/segmentów, w których znajdą się jednostki najbardziej do siebie podobne, a powstałe grupy będą się między sobą różnić. Całe utrudnienie polega na tym, że nie wiemy ile tych grup ma powstać.</p>
+</div>
+<div id="metoda-k-średnich" class="section level2">
+<h2><span class="header-section-number">4.2</span> Metoda k-średnich</h2>
+<p>Najpopularniejszą metodą grupowania jest metoda k-średnich. Do jej zalet należy zaliczyć to, że dobrze działa zarówno na małych, jak i dużych zbiorach i jest bardzo efektywny - zwykle osiąga zbieżność w mniej niż 10 iteracjach. Z wad należy wskazać losowy wybór początkowych centrów skupień, co może skutkować nieprawidłowym przypisaniem obiektów do grup.</p>
+<p>Algorytm postępowania jest następujący:</p>
+<ol style="list-style-type: decimal">
+<li>Wskaż liczbę grup <span class="math inline">\(k\)</span>.</li>
+<li>Wybierz dowolne <span class="math inline">\(k\)</span> punktów jako centra grup.</li>
+<li>Przypisz każdą z obserwacji do najbliższego centroidu.</li>
+<li>Oblicz nowe centrum grupy.</li>
+<li>Przypisz każdą z obserwacji do nowych centroidów. Jeśli któraś obserwacja zmieniła grupę - przejdź do kroku nr 4, a w przeciwnym przypadku zakończ algorytm.</li>
+</ol>
+<p>Wykorzystamy informacje ze zbioru zawierającego informacje o <a href="data/klienci.csv">klientach sklepu</a> i dokonamy grupowania tych klientów.</p>
+<p>Opis zbioru:</p>
+<ul>
+<li>klientID - identyfikator klienta</li>
+<li>plec - płeć</li>
+<li>wiek - wiek</li>
+<li>roczny_dochod - roczny dochód wyrażony w tys. dolarów</li>
+<li>wskaznik_wydatkow - klasyfikacja sklepu od 1 do 100</li>
+</ul>
+<p>Wczytujemy zbiór danych i sprawdzamy czy pomiędzy zmiennymi są widoczne jakieś zależności.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb68-2" title="2"></a>
+<a class="sourceLine" id="cb68-3" title="3">klienci &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/klienci.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb68-4" title="4"></a>
+<a class="sourceLine" id="cb68-5" title="5"><span class="kw">ggplot</span>(klienci, <span class="kw">aes</span>(<span class="dt">x=</span>wiek, <span class="dt">y=</span>roczny_dochod)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb68-6" title="6"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p>Pomiędzy wiekiem a rocznym dochodem nie widać zależności.</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" title="1"><span class="kw">ggplot</span>(klienci, <span class="kw">aes</span>(<span class="dt">x=</span>wiek, <span class="dt">y=</span>wskaznik_wydatkow)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb69-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p>W przypadku wieku i wskaźnika wydatków moglibyśmy się pokusić o podział zbioru na dwie grupy za pomocą przekątnej.</p>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">ggplot</span>(klienci, <span class="kw">aes</span>(<span class="dt">x=</span>wskaznik_wydatkow, <span class="dt">y=</span>roczny_dochod)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb70-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p>Po zestawieniu rocznego dochodu i wskaźnika wydatków wyłania się 5 potencjalnych grup, zatem te dwie cechy wykorzystamy do grupowania. Jednak przed zastosowaniem algorytmu musimy te dane przygotować normalizując zakres obu cech - w tym przypadku za pomocą standaryzacji.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1">klienci_z &lt;-<span class="st"> </span>klienci <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb71-2" title="2"><span class="st">  </span><span class="kw">select</span>(roczny_dochod, wskaznik_wydatkow) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb71-3" title="3"><span class="st">  </span><span class="kw">scale</span>()</a>
+<a class="sourceLine" id="cb71-4" title="4"></a>
+<a class="sourceLine" id="cb71-5" title="5"><span class="kw">head</span>(klienci_z)</a></code></pre></div>
+<pre><code>##      roczny_dochod wskaznik_wydatkow
+## [1,]     -1.734646        -0.4337131
+## [2,]     -1.734646         1.1927111
+## [3,]     -1.696572        -1.7116178
+## [4,]     -1.696572         1.0378135
+## [5,]     -1.658498        -0.3949887
+## [6,]     -1.658498         0.9990891</code></pre>
+<p>W przypadku, gdy podział na grupy nie jest tak oczywisty lub bierzemy pod uwagę więcej niż dwa kryteria to wówczas w wyznaczeniu optymalnej liczby skupień może pomóc wykres osypiska (ang. elbow method). Polega to na przeprowadzeniu grupowania (z wykorzystaniem funkcji <code>kmeans()</code>) dla różniej liczby grup i porównanie wariancji wewnątrz-grupowej. Dane do stworzenia wykresu osypiska możemy obliczyć w pętli:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1">zm_w_gr &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dv">15</span>)</a>
+<a class="sourceLine" id="cb73-2" title="2"></a>
+<a class="sourceLine" id="cb73-3" title="3"><span class="co"># wprowadzenie pętli</span></a>
+<a class="sourceLine" id="cb73-4" title="4"></a>
+<a class="sourceLine" id="cb73-5" title="5"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(zm_w_gr)) {</a>
+<a class="sourceLine" id="cb73-6" title="6">  <span class="kw">set.seed</span>(<span class="dv">14</span>)</a>
+<a class="sourceLine" id="cb73-7" title="7">  gr &lt;-<span class="st"> </span><span class="kw">kmeans</span>(klienci_z, <span class="dt">centers =</span> i)</a>
+<a class="sourceLine" id="cb73-8" title="8">  zm_w_gr[i] &lt;-<span class="st"> </span>gr<span class="op">$</span>tot.withinss</a>
+<a class="sourceLine" id="cb73-9" title="9">}</a>
+<a class="sourceLine" id="cb73-10" title="10"></a>
+<a class="sourceLine" id="cb73-11" title="11"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, zm_w_gr, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>)</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>Wybieramy liczbę skupień po której nie następuje już gwałtowny spadek wartości wariancji wewnątrz-grupowej. Według tego kryterium powinniśmy wybrać wartość 6 zamiast 5. Sprawdźmy zatem jakie otrzymamy przyporządkowanie do grup. Następnie informację o tym przypisaniu umieszczamy w oryginalnym zbiorze danych i przedstawiamy na wykresie. W celu uzyskania powtarzalnych wyników zastosujemy stałe ziarno generatora.</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">set.seed</span>(<span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb74-2" title="2">grupy &lt;-<span class="st"> </span><span class="kw">kmeans</span>(<span class="dt">x =</span> klienci_z, <span class="dt">centers =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb74-3" title="3"></a>
+<a class="sourceLine" id="cb74-4" title="4">klienci<span class="op">$</span>grupa &lt;-<span class="st"> </span><span class="kw">as.factor</span>(grupy<span class="op">$</span>cluster)</a>
+<a class="sourceLine" id="cb74-5" title="5"></a>
+<a class="sourceLine" id="cb74-6" title="6"><span class="kw">ggplot</span>(klienci, <span class="kw">aes</span>(<span class="dt">x=</span>wskaznik_wydatkow, </a>
+<a class="sourceLine" id="cb74-7" title="7">                    <span class="dt">y=</span>roczny_dochod,</a>
+<a class="sourceLine" id="cb74-8" title="8">                    <span class="dt">color=</span>grupa)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb74-9" title="9"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<p>Jak zauważamy ten podział nie jest właściwy. Ze względu na losowy przydział centrów skupień na początku algorytmu istnieje spora szansa, że rozwiązanie nie będzie optymalne. Rozwiązaniem tego problemu jest użycie algorytmu kmeans++ do początkowego ustalenia centrów. Ta metoda jest zaimplementowana w pakiecie <code>ClusterR</code>. Ponadto jest tam także funkcja do ustalenia optymalnej liczby skupień na podstawie wykresu osypiska.</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">library</span>(ClusterR)</a>
+<a class="sourceLine" id="cb75-2" title="2"></a>
+<a class="sourceLine" id="cb75-3" title="3"><span class="kw">Optimal_Clusters_KMeans</span>(<span class="dt">data =</span> klienci_z, <span class="dt">max_clusters =</span> <span class="dv">15</span>, <span class="dt">criterion =</span> <span class="st">&quot;WCSSE&quot;</span>)</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<pre><code>##  [1] 398.00000 267.67171 156.91549 108.68209  65.24057  59.83221  49.72816
+##  [8]  39.31585  32.33261  31.70877  29.24003  28.18491  25.34096  22.01873
+## [15]  20.67234
+## attr(,&quot;class&quot;)
+## [1] &quot;k-means clustering&quot;</code></pre>
+<p>Wybieramy liczbę skupień po której nie następuje już gwałtowny spadek wartości wariancji wewnątrz-grupowej. W analizowanym przypadku będzie to 5 grup.</p>
+<p>Dodatkowo można obliczyć jedno z wielu kryteriów dobroci podziału obiektów na grupy. Jednym z najpopularniejszych jest kryterium Calińskiego-Harabasza zaimplementowane m.in. w pakiecie clusterCrit. Podobnie jak w przypadku wykresu osypiska należy policzyć wartość tego kryterium dla różnej liczby segemntów i wybrać liczbę grup wskazaną przez wartość maksymalną.</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb77-1" title="1"><span class="kw">library</span>(clusterCrit)</a>
+<a class="sourceLine" id="cb77-2" title="2"></a>
+<a class="sourceLine" id="cb77-3" title="3">kryt_ch &lt;-<span class="st"> </span><span class="kw">numeric</span>(<span class="dv">15</span>)</a>
+<a class="sourceLine" id="cb77-4" title="4"></a>
+<a class="sourceLine" id="cb77-5" title="5"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(kryt_ch)) {</a>
+<a class="sourceLine" id="cb77-6" title="6">  gr &lt;-<span class="st"> </span><span class="kw">KMeans_rcpp</span>(klienci_z, <span class="dt">clusters =</span> i)</a>
+<a class="sourceLine" id="cb77-7" title="7">  kryt_ch[i] &lt;-<span class="st"> </span><span class="kw">intCriteria</span>(<span class="dt">traj =</span> klienci_z, <span class="dt">part =</span> <span class="kw">as.integer</span>(gr<span class="op">$</span>clusters), <span class="dt">crit =</span> <span class="st">&quot;cal&quot;</span>)</a>
+<a class="sourceLine" id="cb77-8" title="8">}</a>
+<a class="sourceLine" id="cb77-9" title="9"></a>
+<a class="sourceLine" id="cb77-10" title="10"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">15</span>, kryt_ch, <span class="dt">type=</span><span class="st">&quot;b&quot;</span>)</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p>Najwyższe wartości indeksu Calińskiego-Harabasza obserwujemy dla 5 i 9 skupień. Należy jednak pamiętać, że w grupowaniu bardzo ważna jest ocena badacza pod kątem sensowności otrzymanego podziału - łatwiej stworzyć 5 różnych kampanii reklamowych aniżeli 9.</p>
+<p>Następnie korzystamy z funkcji <code>KMeans_rcpp</code> do wyznaczenia przynależności do grup. Ta funkcja domyślnie korzysta z algorytmu kmeans++, zatem nie ma niebezpieczeństwa, że uzyskamy niewłaściwe przyporządkowanie.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" title="1">grupy2 &lt;-<span class="st"> </span><span class="kw">KMeans_rcpp</span>(<span class="dt">data =</span> klienci_z, <span class="dt">clusters =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb78-2" title="2"></a>
+<a class="sourceLine" id="cb78-3" title="3">klienci<span class="op">$</span>grupa2 &lt;-<span class="st"> </span><span class="kw">as.factor</span>(grupy2<span class="op">$</span>clusters)</a>
+<a class="sourceLine" id="cb78-4" title="4"></a>
+<a class="sourceLine" id="cb78-5" title="5"><span class="kw">ggplot</span>(klienci, <span class="kw">aes</span>(<span class="dt">x=</span>wskaznik_wydatkow, </a>
+<a class="sourceLine" id="cb78-6" title="6">                    <span class="dt">y=</span>roczny_dochod,</a>
+<a class="sourceLine" id="cb78-7" title="7">                    <span class="dt">color=</span>grupa2)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb78-8" title="8"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p>Ostatnim etapem analizy jest odpowiednia charakterystyka uzyskanych klastrów - najczęściej wyznacza się średnie wartości cech w ramach każdej grupy.</p>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb79-1" title="1">klienci <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb79-2" title="2"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>klientID, <span class="op">-</span>plec, <span class="op">-</span>grupa) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb79-3" title="3"><span class="st">  </span><span class="kw">group_by</span>(grupa2) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb79-4" title="4"><span class="st">  </span><span class="kw">summarise_all</span>(<span class="dt">.funs =</span> <span class="st">&quot;mean&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 5 x 4
+##   grupa2  wiek roczny_dochod wskaznik_wydatkow
+##   &lt;fct&gt;  &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;
+## 1 1       25.3          25.7              79.4
+## 2 2       45.2          26.3              20.9
+## 3 3       41.1          88.2              17.1
+## 4 4       32.7          86.5              82.1
+## 5 5       42.7          55.3              49.5</code></pre>
+<p>W grupie pierwszej znalazły się osoby z niskimi dochodami i wysokim wskaźnikiem wydatków. Grupa druga to klienci o niskich dochodach i wydatkach - ich przeciwieństwem jest grupa 4. W grupie 3 są osoby z wysokimi dochodami, ale niskimi wydatkami. Grupa 5 to z kolei średniacy - klienci o średnich dochodach i wydatkach.</p>
+</div>
+<div id="metoda-hierarchiczna" class="section level2">
+<h2><span class="header-section-number">4.3</span> Metoda hierarchiczna</h2>
+<p>Alternatywną metodą grupowania jest metoda hierarchiczna. Do jej zalet zaliczymy prosty sposób ustalenia liczby grup oraz praktyczny sposób wizualizacji. Niestety nie jest to metoda odpowiednia dla dużych zbiorów danych.</p>
+<p>Algorytm postępowania:</p>
+<ol style="list-style-type: decimal">
+<li>Każda obserwacji stanowi jedną z <span class="math inline">\(N\)</span> pojedynczych grup.</li>
+<li>Na podstawie macierzy odległości połącz dwie najbliżej leżące obserwacje w jedną grupę (<span class="math inline">\(N-1\)</span> grup).</li>
+<li>Połącz dwa najbliżej siebie leżące grupy w jedną (<span class="math inline">\(N-2\)</span> grup).</li>
+<li>Powtórz krok nr 3, aż do uzyskania jednej grupy.</li>
+</ol>
+<p>Dla tych samych danych przeprowadzimy grupowanie, ale tym razem metodą hierarchiczną. W metodzie hierarchicznej bazuje się na macierzy odległości pomiędzy obserwacjami. Można zastosować wiele miar odległości, ale najczęściej wykorzystywana jest odległość euklidesowa. Druga zmienna, na którą mamy wpływ to metoda łączenia skupień - w tym przypadku najlepsze rezultaty daje metoda Warda. Z kolei wyniki grupowania metodą hierarchiczną są prezentowane na dendrogramie.</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb81-1" title="1">macierz_odl &lt;-<span class="st"> </span><span class="kw">dist</span>(klienci_z)</a>
+<a class="sourceLine" id="cb81-2" title="2"></a>
+<a class="sourceLine" id="cb81-3" title="3">dendrogram &lt;-<span class="st"> </span><span class="kw">hclust</span>(macierz_odl, <span class="dt">method =</span> <span class="st">&quot;ward.D&quot;</span>)</a>
+<a class="sourceLine" id="cb81-4" title="4"></a>
+<a class="sourceLine" id="cb81-5" title="5"><span class="kw">plot</span>(dendrogram, <span class="dt">xlab=</span><span class="st">&quot;Klienci&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Odległość euklidesowa&quot;</span>)</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p>Na podstawie dendrogramu identyfikujemy największe różnice odległości opisane na osi Y. Także w tym przypadku identyfikujemy 5 grup. Istnieje także wiele kryteriów, które mają na celu wyznaczyć optymalną liczbę grup - link.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1"><span class="kw">plot</span>(dendrogram, <span class="dt">xlab=</span><span class="st">&quot;Klienci&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;Odległość euklidesowa&quot;</span>)</a>
+<a class="sourceLine" id="cb82-2" title="2"><span class="kw">rect.hclust</span>(dendrogram, <span class="dt">k=</span><span class="dv">5</span>, <span class="dt">border=</span><span class="st">&quot;red&quot;</span>)</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p>Następnie dopisujemy do oryginalnego zbioru danych etykiety utworzonych grup.</p>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb83-1" title="1">grupy_dendro &lt;-<span class="st"> </span><span class="kw">cutree</span>(dendrogram, <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb83-2" title="2"></a>
+<a class="sourceLine" id="cb83-3" title="3">klienci<span class="op">$</span>grupa3 &lt;-<span class="st"> </span><span class="kw">as.factor</span>(grupy_dendro)</a>
+<a class="sourceLine" id="cb83-4" title="4"></a>
+<a class="sourceLine" id="cb83-5" title="5"><span class="kw">ggplot</span>(klienci, <span class="kw">aes</span>(<span class="dt">x=</span>wskaznik_wydatkow, </a>
+<a class="sourceLine" id="cb83-6" title="6">                    <span class="dt">y=</span>roczny_dochod,</a>
+<a class="sourceLine" id="cb83-7" title="7">                    <span class="dt">color=</span>grupa3)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb83-8" title="8"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<p>Uzyskane wyniki są bardzo zbliżone do tych otrzymanych za pomocą algorytmu k-średnich.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">klienci <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-2" title="2"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>klientID, <span class="op">-</span>plec, <span class="op">-</span>grupa, <span class="op">-</span>grupa2) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-3" title="3"><span class="st">  </span><span class="kw">group_by</span>(grupa3) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb84-4" title="4"><span class="st">  </span><span class="kw">summarise_all</span>(<span class="dt">.funs =</span> <span class="st">&quot;mean&quot;</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 5 x 4
+##   grupa3  wiek roczny_dochod wskaznik_wydatkow
+##   &lt;fct&gt;  &lt;dbl&gt;         &lt;dbl&gt;             &lt;dbl&gt;
+## 1 1       45.2          26.3              20.9
+## 2 2       25.3          25.1              80.0
+## 3 3       42.5          55.8              49.1
+## 4 4       32.7          86.5              82.1
+## 5 5       41            89.4              15.6</code></pre>
+<p>Metoda hierarchiczna zastosowała inną numerację grup. Liczebności tych grup nieznacznie się różnią, ale charakterystyki wewnątrz grupowe są bardzo podobne do tych określonych na podstawie metody k-średnich.</p>
+<p>Tworząc tabelę krzyżową możemy zobaczyć, że tylko 4 obserwacje zmieniły przypisanie do grup.</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" title="1"><span class="kw">table</span>(klienci<span class="op">$</span>grupa2, klienci<span class="op">$</span>grupa3)</a></code></pre></div>
+<pre><code>##    
+##      1  2  3  4  5
+##   1  0 21  1  0  0
+##   2 23  0  0  0  0
+##   3  0  0  3  0 32
+##   4  0  0  0 39  0
+##   5  0  0 81  0  0</code></pre>
+<p>Porównajmy jeszcze wyniki działania tych dwóch metod na wykresach:</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" title="1">klienci <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb88-2" title="2"><span class="st">  </span><span class="kw">select</span>(roczny_dochod, wskaznik_wydatkow, grupa2, grupa3) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb88-3" title="3"><span class="st">  </span><span class="kw">gather</span>(metoda, grupa, <span class="op">-</span>roczny_dochod, <span class="op">-</span>wskaznik_wydatkow) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb88-4" title="4"><span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>wskaznik_wydatkow, <span class="dt">y=</span>roczny_dochod)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">color=</span>grupa)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb88-6" title="6"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span><span class="st"> </span>metoda)</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p>Problematyczne obserwacje pochodziły z grupy klientów o przeciętnych dochodach oraz wydatkach.</p>
+<div id="zadania" class="section level3">
+<h3><span class="header-section-number">4.3.1</span> Zadania</h3>
+<ol style="list-style-type: decimal">
+<li><p>Dokonaj grupowania danych dotyczących <a href="data/auta.csv">32 samochodów</a> według następujących zmiennych: pojemność, przebieg, lata oraz cena.</p></li>
+<li><p>Rozpoznawanie czynności na podstawie danych z przyspieszeniomierza w telefonie: <a href="http://archive.ics.uci.edu/ml/datasets/User+Identification+From+Walking+Activity#">User Identification From Walking Activity Data Set</a></p></li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="regresja.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="klasyfikacja.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Wawrowski_ADR.pdf", "Wawrowski_ADR.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Klasyfikacja | Metody przetwarzania i analizy danych w R</title>
+  <meta name="description" content="Materiały dydaktyczne do kursu Metody przetwarzania i analizy danych w R." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Klasyfikacja | Metody przetwarzania i analizy danych w R" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Materiały dydaktyczne do kursu Metody przetwarzania i analizy danych w R." />
+  <meta name="github-repo" content="lwawrowski/analiza-danych-R" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Klasyfikacja | Metody przetwarzania i analizy danych w R" />
+  
+  <meta name="twitter:description" content="Materiały dydaktyczne do kursu Metody przetwarzania i analizy danych w R." />
+  
+
+<meta name="author" content="Łukasz Wawrowski" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="grupowanie.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Metody przetwarzania i analizy danych w R</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Literatura</a></li>
+<li class="chapter" data-level="1" data-path="analiza-opisowa.html"><a href="analiza-opisowa.html"><i class="fa fa-check"></i><b>1</b> Analiza opisowa</a><ul>
+<li class="chapter" data-level="1.1" data-path="analiza-opisowa.html"><a href="analiza-opisowa.html#wprowadzenie"><i class="fa fa-check"></i><b>1.1</b> Wprowadzenie</a></li>
+<li class="chapter" data-level="1.2" data-path="analiza-opisowa.html"><a href="analiza-opisowa.html#eksploracyjna-analiza-danych"><i class="fa fa-check"></i><b>1.2</b> Eksploracyjna analiza danych</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html"><i class="fa fa-check"></i><b>2</b> Testowanie hipotez</a><ul>
+<li class="chapter" data-level="2.1" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#wprowadzenie-1"><i class="fa fa-check"></i><b>2.1</b> Wprowadzenie</a></li>
+<li class="chapter" data-level="2.2" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#hipoteza-statystyczna"><i class="fa fa-check"></i><b>2.2</b> Hipoteza statystyczna</a></li>
+<li class="chapter" data-level="2.3" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#poziom-istotności-i-wartość-p"><i class="fa fa-check"></i><b>2.3</b> Poziom istotności i wartość p</a></li>
+<li class="chapter" data-level="2.4" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#testy-statystyczne"><i class="fa fa-check"></i><b>2.4</b> Testy statystyczne</a></li>
+<li class="chapter" data-level="2.5" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#zbiór-danych"><i class="fa fa-check"></i><b>2.5</b> Zbiór danych</a></li>
+<li class="chapter" data-level="2.6" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#test-niezależności"><i class="fa fa-check"></i><b>2.6</b> Test niezależności</a></li>
+<li class="chapter" data-level="2.7" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#test-proporcji"><i class="fa fa-check"></i><b>2.7</b> Test proporcji</a></li>
+<li class="chapter" data-level="2.8" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#testowanie-normalności---test-shapiro-wilka"><i class="fa fa-check"></i><b>2.8</b> Testowanie normalności - test Shapiro-Wilka</a></li>
+<li class="chapter" data-level="2.9" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#testowanie-normalności---wykres-kwantyl-kwantyl"><i class="fa fa-check"></i><b>2.9</b> Testowanie normalności - wykres kwantyl-kwantyl</a></li>
+<li class="chapter" data-level="2.10" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#testowanie-wariancji---test-bartletta"><i class="fa fa-check"></i><b>2.10</b> Testowanie wariancji - test Bartletta</a></li>
+<li class="chapter" data-level="2.11" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#testowanie-średnich"><i class="fa fa-check"></i><b>2.11</b> Testowanie średnich</a><ul>
+<li class="chapter" data-level="2.11.1" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#test-t-średnich"><i class="fa fa-check"></i><b>2.11.1</b> Test t-średnich</a></li>
+<li class="chapter" data-level="2.11.2" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#anova"><i class="fa fa-check"></i><b>2.11.2</b> ANOVA</a></li>
+<li class="chapter" data-level="2.11.3" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#test-wilcoxona"><i class="fa fa-check"></i><b>2.11.3</b> Test Wilcoxona</a></li>
+<li class="chapter" data-level="2.11.4" data-path="testowanie-hipotez.html"><a href="testowanie-hipotez.html#test-kruskala-wallisa"><i class="fa fa-check"></i><b>2.11.4</b> Test Kruskala-Wallisa</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="regresja.html"><a href="regresja.html"><i class="fa fa-check"></i><b>3</b> Regresja</a><ul>
+<li class="chapter" data-level="3.1" data-path="regresja.html"><a href="regresja.html#wprowadzenie-2"><i class="fa fa-check"></i><b>3.1</b> Wprowadzenie</a></li>
+<li class="chapter" data-level="3.2" data-path="regresja.html"><a href="regresja.html#regresja-prosta"><i class="fa fa-check"></i><b>3.2</b> Regresja prosta</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="regresja.html"><a href="regresja.html#zadanie"><i class="fa fa-check"></i><b>3.2.1</b> Zadanie</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="regresja.html"><a href="regresja.html#regresja-wieloraka"><i class="fa fa-check"></i><b>3.3</b> Regresja wieloraka</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="regresja.html"><a href="regresja.html#zadanie-1"><i class="fa fa-check"></i><b>3.3.1</b> Zadanie</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="grupowanie.html"><a href="grupowanie.html"><i class="fa fa-check"></i><b>4</b> Grupowanie</a><ul>
+<li class="chapter" data-level="4.1" data-path="grupowanie.html"><a href="grupowanie.html#wprowadzenie-3"><i class="fa fa-check"></i><b>4.1</b> Wprowadzenie</a></li>
+<li class="chapter" data-level="4.2" data-path="grupowanie.html"><a href="grupowanie.html#metoda-k-średnich"><i class="fa fa-check"></i><b>4.2</b> Metoda k-średnich</a></li>
+<li class="chapter" data-level="4.3" data-path="grupowanie.html"><a href="grupowanie.html#metoda-hierarchiczna"><i class="fa fa-check"></i><b>4.3</b> Metoda hierarchiczna</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="grupowanie.html"><a href="grupowanie.html#zadania"><i class="fa fa-check"></i><b>4.3.1</b> Zadania</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="klasyfikacja.html"><a href="klasyfikacja.html"><i class="fa fa-check"></i><b>5</b> Klasyfikacja</a><ul>
+<li class="chapter" data-level="5.1" data-path="klasyfikacja.html"><a href="klasyfikacja.html#wprowadzenie-4"><i class="fa fa-check"></i><b>5.1</b> Wprowadzenie</a></li>
+<li class="chapter" data-level="5.2" data-path="klasyfikacja.html"><a href="klasyfikacja.html#drzewa-decyzyjne"><i class="fa fa-check"></i><b>5.2</b> Drzewa decyzyjne</a></li>
+<li class="chapter" data-level="5.3" data-path="klasyfikacja.html"><a href="klasyfikacja.html#gradient-boosting-machine"><i class="fa fa-check"></i><b>5.3</b> Gradient Boosting Machine</a><ul>
+<li class="chapter" data-level="5.3.1" data-path="klasyfikacja.html"><a href="klasyfikacja.html#zadania-1"><i class="fa fa-check"></i><b>5.3.1</b> Zadania</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Metody przetwarzania i analizy danych w R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="klasyfikacja" class="section level1">
+<h1><span class="header-section-number">5</span> Klasyfikacja</h1>
+<p><a href="presentations/06_klasyfikacja.html">Prezentacja</a></p>
+<div id="wprowadzenie-4" class="section level2">
+<h2><span class="header-section-number">5.1</span> Wprowadzenie</h2>
+<p>Celem analizy klasyfikacji jest zbudowanie modelu predykcyjnego, który w rezultacie zwróci prawdopodobieństwo przynależności danej obserwacji do jeden z dwóch klas. Przykładowo na podstawie danych o klientach banku można stworzyć model oceny zdolności kredytowej dla nowych klientów. W tym rozdziale posłużymy się <a href="https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)">German Credit Data</a> do budowy takiego predyktora. Wybrane kolumny z tego zbioru znajdują się w <a href="data/german_credit_data.xlsx">tym pliku</a>.</p>
+<p>W pierwszym kroku wczytujemy dane i dokonujemy niezbędnych przekształceń tego zbioru. Z wykorzystaniem funkcji <code>clean_names()</code> z pakietu <em>janitor</em> zamieniamy nazwy kolumn w przyjazne przetwarzaniu przez komputer (brak spacji, polskich znaków, itp.). Następnie zmienne tekstowe zamieniamy na zmienne jakościowe - faktory oraz tworzymy nową kolumnę zawierającą wysokość raty kredytu.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb89-2" title="2"><span class="kw">library</span>(readxl)</a>
+<a class="sourceLine" id="cb89-3" title="3"><span class="kw">library</span>(janitor)</a>
+<a class="sourceLine" id="cb89-4" title="4"></a>
+<a class="sourceLine" id="cb89-5" title="5">credit &lt;-<span class="st"> </span><span class="kw">read_xlsx</span>(<span class="st">&quot;data/german_credit_data.xlsx&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb89-6" title="6"><span class="st">  </span><span class="kw">clean_names</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb89-7" title="7"><span class="st">  </span><span class="kw">mutate_if</span>(is.character, as.factor) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb89-8" title="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">job=</span><span class="kw">as.factor</span>(job),</a>
+<a class="sourceLine" id="cb89-9" title="9">         <span class="dt">installment=</span>credit_amount<span class="op">/</span>duration)</a>
+<a class="sourceLine" id="cb89-10" title="10"></a>
+<a class="sourceLine" id="cb89-11" title="11"><span class="kw">summary</span>(credit)</a></code></pre></div>
+<pre><code>##       age            sex      job     housing      saving_accounts
+##  Min.   :19.00   female:310   0: 22   free:108   little    :603   
+##  1st Qu.:27.00   male  :690   1:200   own :713   moderate  :103   
+##  Median :33.00                2:630   rent:179   quite rich: 63   
+##  Mean   :35.55                3:148              rich      : 48   
+##  3rd Qu.:42.00                                   NA&#39;s      :183   
+##  Max.   :75.00                                                    
+##                                                                   
+##  checking_account credit_amount      duration                   purpose   
+##  little  :274     Min.   :  250   Min.   : 4.0   car                :337  
+##  moderate:269     1st Qu.: 1366   1st Qu.:12.0   radio/TV           :280  
+##  rich    : 63     Median : 2320   Median :18.0   furniture/equipment:181  
+##  NA&#39;s    :394     Mean   : 3271   Mean   :20.9   business           : 97  
+##                   3rd Qu.: 3972   3rd Qu.:24.0   education          : 59  
+##                   Max.   :18424   Max.   :72.0   repairs            : 22  
+##                                                  (Other)            : 24  
+##    risk      installment     
+##  bad :300   Min.   :  24.06  
+##  good:700   1st Qu.:  89.60  
+##             Median : 130.33  
+##             Mean   : 167.69  
+##             3rd Qu.: 206.18  
+##             Max.   :2482.67  
+## </code></pre>
+<p>Zamiana cech tekstowych na faktory pozwala w podsumowaniu wygenerowanym przez funkcję <code>summary()</code> obserwować od razu częstości poszczególnych wariantów. Możemy zaobserwować występowanie braków danych w zmiennych saving accounts i checking_account. Generalnie jest to zbyt duży problem, bo tylko niektóre algorytmy klasyfikacji nie obsługują braków danych w zmiennych objaśniających. Ważne jest, żeby braki danych nie występowały dla cechy decyzyjnej.</p>
+<p>Obserwacje z brakami danych można usunąć, ale często spowodowałoby to znaczne zmniejszenie próby badawczej, zatem stosuje się metody mające na celu uzupełnienie braków danych. W najprostszym przypadku braki można zastąpić średnią, medianą lub dominantą. Do bardziej zaawansowanych sposobów należy metoda najbliższych sąsiadów (<a href="https://cran.r-project.org/web/packages/VIM/index.html">VIM</a>) albo imputacja wielokrotna (<a href="https://cran.r-project.org/web/packages/mice/index.html">mice</a>).</p>
+<p>W omawianym przypadku klientów wiarygodnych jest 700, a tych, którzy nie spłacili zobowiązania 300. Mamy zatem do czynienia z niezbalansowaną próbą. W idealnym przypadku klasyfikacji, przypadków z każdej grupy powinno być tyle samo. W przeciwnym przypadku model będzie działał lepiej dla klasy większościowej. Najprostszą metodą balansowania danych jest upsampling czyli dolosowywanie obserwacji z klasy mniejszościowej, tak aby wyrównać liczebności. Przeciwieństwem tego podejścia jest downsampling. Alternatywnie można zastosować metodę SMOTE, która generuje sztuczne obserwacje dla klasy mniejszościowej (pakiety <a href="https://cran.r-project.org/web/packages/DMwR/index.html">DMwR</a>, <a href="https://cran.r-project.org/web/packages/imbalance/index.html">imbalance</a>).</p>
+</div>
+<div id="drzewa-decyzyjne" class="section level2">
+<h2><span class="header-section-number">5.2</span> Drzewa decyzyjne</h2>
+<p>Najpopularniejszą metodą klasyfikacji są drzewa decyzyjne, które charakteryzują się z reguły dobrą efektywnością i pozwalają na łatwą interpretację zastosowanych reguł klasyfikacji. Wykorzystamy pakiet <a href="https://cran.r-project.org/web/packages/rpart/index.html">rpart</a> do stworzenia drzewa oraz pakiet <a href="https://cran.r-project.org/web/packages/rpart.plot/index.html">rpart.plot</a> do wizualizacji.</p>
+<p>Proces tworzenia drzewa jest bardzo prosty, a argumenty w funkcji <code>rpart()</code> są takie same jak w regresji liniowej.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">library</span>(rpart)</a>
+<a class="sourceLine" id="cb91-2" title="2"><span class="kw">library</span>(rpart.plot)</a>
+<a class="sourceLine" id="cb91-3" title="3"></a>
+<a class="sourceLine" id="cb91-4" title="4">m1 &lt;-<span class="st"> </span><span class="kw">rpart</span>(<span class="dt">formula =</span> risk <span class="op">~</span><span class="st"> </span>., <span class="dt">data =</span> credit)</a>
+<a class="sourceLine" id="cb91-5" title="5"></a>
+<a class="sourceLine" id="cb91-6" title="6"><span class="kw">rpart.plot</span>(m1)</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
+<p>W rezultacie uzyskujemy drzewo decyzyjne z optymalnie dobranymi zmiennymi objaśniającymi. W każdym węźle drzewa podane są następujące wartości: - prognozowana klasa, prawdopodobieństwa zaklasyfikowania do klasy pozytywnej, odsetek obserwacji w węźle. Domyślnym progiem klasyfikacji jest wartość 0,5. Jeżeli prawdopodobieństwo jest poniżej tej wartości to nastąpi przypisanie do grupy klientów niespłacających pożyczki, a jeśli powyżej to do tej drugiej grupy.</p>
+<p>Oceny jakości klasyfikatora dokonuje się na podstawie <a href="https://pl.wikipedia.org/wiki/Tablica_pomy%C5%82ek">macierzy pomyłek</a> oraz miar wyznaczonych na jej podstawie. Najpopularniejsze z nich to:</p>
+<ul>
+<li>dokładność (accuracy): % poprawnie zaklasyfikowanych</li>
+<li>precyzja (precison): % poprawnie rozpoznanych przypadków pozytywnych TP/(TP+FP)</li>
+<li>czułość (sensitivity/recall): % prawdziwie pozytywnych TP/(TP+FN)</li>
+<li>swoistość (specificity): % prawdziwie negatywnych TN/(TN+FP)</li>
+<li>F1: średnia harmoniczna z czułości i precyzji 2TP/(2TP+FP+FN)</li>
+</ul>
+<p>Im wyższe wartości tych miar tym lepszy klasyfikator. Do wyznaczenia tych miar w R służy funkcja z pakietu <a href="https://topepo.github.io/caret/">caret</a>. W tym celu trzeba wyznaczyć wartości prognozowanej klasy na podstawie modelu.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" title="1"><span class="kw">library</span>(caret)</a>
+<a class="sourceLine" id="cb92-2" title="2"></a>
+<a class="sourceLine" id="cb92-3" title="3">pred_risk_m1 &lt;-<span class="st"> </span><span class="kw">predict</span>(<span class="dt">object =</span> m1, <span class="dt">newdata =</span> credit, <span class="dt">type =</span> <span class="st">&quot;class&quot;</span>)</a></code></pre></div>
+<p>Argument <code>type</code> określa typ predykcji: <code>"class"</code> oznacza prognozowaną klasę, a <code>"prob"</code> prawdopodobieństwo. Na tej podstawie oraz wartości rzeczywistych tworzymy macierz pomyłek:</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1"><span class="kw">confusionMatrix</span>(<span class="dt">data =</span> pred_risk_m1, <span class="dt">reference =</span> credit<span class="op">$</span>risk, </a>
+<a class="sourceLine" id="cb93-2" title="2">                <span class="dt">positive =</span> <span class="st">&quot;good&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;everything&quot;</span>)</a></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction bad good
+##       bad  117   60
+##       good 183  640
+##                                           
+##                Accuracy : 0.757           
+##                  95% CI : (0.7292, 0.7833)
+##     No Information Rate : 0.7             
+##     P-Value [Acc &gt; NIR] : 3.553e-05       
+##                                           
+##                   Kappa : 0.3447          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 5.024e-15       
+##                                           
+##             Sensitivity : 0.9143          
+##             Specificity : 0.3900          
+##          Pos Pred Value : 0.7776          
+##          Neg Pred Value : 0.6610          
+##               Precision : 0.7776          
+##                  Recall : 0.9143          
+##                      F1 : 0.8404          
+##              Prevalence : 0.7000          
+##          Detection Rate : 0.6400          
+##    Detection Prevalence : 0.8230          
+##       Balanced Accuracy : 0.6521          
+##                                           
+##        &#39;Positive&#39; Class : good            
+## </code></pre>
+<p>W naszym przykładzie spośród 1000 klientów, model jako wiarygodnych kredytobiorców zaklasyfikował 640, a 117 prawidłowo jako osoby, które nie spłaciły zobowiązania. W 60 przypadkach model uznał brak zdolności kredytowej u klienta, podczas gdy w rzeczywistości pożyczka została spłacona. Dla 183 klientów podjętoby odwrotną decyzję - model przyznałby kredyt, a w rzeczywistości osoby te nie spłaciły pożyczki. Dokładność w tym przypadku wynosi 75,7%, a precyzja 77,8%. Czułość tego predyktora jest wysoka (91,4%), ale swoistość już nie (39%), na co może mieć wpływ niezbalansowanie danych.</p>
+<p>Przedstawiony powyżej przykład miał charakter analizy ekspolarycyjnej - opartej na całym zbiorze danych. W praktyce stosuje się podejście polegające na podziale zbioru danych na zbiór treningowy oraz walidacyjny. Na danych ze zbioru treningowego buduje się model, który następnie testowany jest na danych, których nigdy wcześniej “nie widział” - na zbiorze walidacyjnym. Miary klasyfikacji obliczone na podstawie zbioru walidacyjnego dostarczają realnej oceny jakości klasyfikatora.</p>
+<p>Do podziału zbioru służy funkcja <code>createDataPartition()</code> z pakietu <em>caret</em>. Zbiory treningowy i walidacyjny tworzone są w taki sposób, aby zachować proporcje w zmiennej decyzyjnej. Domyślnie funkcja dzieli zbiór danych w układzie 50/50, natomiast w tym przykładzie 80% obserwacji umieścimy w zbiorze treningowym.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1"><span class="kw">set.seed</span>(<span class="dv">123</span>)</a>
+<a class="sourceLine" id="cb95-2" title="2">split &lt;-<span class="st"> </span><span class="kw">createDataPartition</span>(<span class="dt">y =</span> credit<span class="op">$</span>risk, <span class="dt">p =</span> <span class="fl">0.8</span>)</a>
+<a class="sourceLine" id="cb95-3" title="3"></a>
+<a class="sourceLine" id="cb95-4" title="4">train_credit &lt;-<span class="st"> </span>credit[split<span class="op">$</span>Resample1,]</a>
+<a class="sourceLine" id="cb95-5" title="5">valid_credit &lt;-<span class="st"> </span>credit[<span class="op">-</span>split<span class="op">$</span>Resample1,]</a>
+<a class="sourceLine" id="cb95-6" title="6"></a>
+<a class="sourceLine" id="cb95-7" title="7"><span class="kw">summary</span>(train_credit)</a></code></pre></div>
+<pre><code>##       age            sex      job     housing      saving_accounts
+##  Min.   :19.00   female:252   0: 17   free: 80   little    :486   
+##  1st Qu.:27.00   male  :548   1:159   own :576   moderate  : 85   
+##  Median :33.00                2:504   rent:144   quite rich: 49   
+##  Mean   :35.43                3:120              rich      : 34   
+##  3rd Qu.:42.00                                   NA&#39;s      :146   
+##  Max.   :75.00                                                    
+##                                                                   
+##  checking_account credit_amount      duration                    purpose   
+##  little  :228     Min.   :  276   Min.   : 4.00   car                :284  
+##  moderate:205     1st Qu.: 1374   1st Qu.:12.00   radio/TV           :219  
+##  rich    : 46     Median : 2326   Median :18.00   furniture/equipment:139  
+##  NA&#39;s    :321     Mean   : 3300   Mean   :21.02   business           : 76  
+##                   3rd Qu.: 3965   3rd Qu.:24.00   education          : 46  
+##                   Max.   :18424   Max.   :72.00   repairs            : 17  
+##                                                   (Other)            : 19  
+##    risk      installment     
+##  bad :240   Min.   :  24.06  
+##  good:560   1st Qu.:  87.18  
+##             Median : 131.74  
+##             Mean   : 168.95  
+##             3rd Qu.: 206.06  
+##             Max.   :2482.67  
+## </code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1"><span class="kw">summary</span>(valid_credit)</a></code></pre></div>
+<pre><code>##       age            sex      job     housing      saving_accounts
+##  Min.   :20.00   female: 58   0:  5   free: 28   little    :117   
+##  1st Qu.:27.00   male  :142   1: 41   own :137   moderate  : 18   
+##  Median :34.00                2:126   rent: 35   quite rich: 14   
+##  Mean   :36.02                3: 28              rich      : 14   
+##  3rd Qu.:42.00                                   NA&#39;s      : 37   
+##  Max.   :74.00                                                    
+##                                                                   
+##  checking_account credit_amount      duration                    purpose  
+##  little  :46      Min.   :  250   Min.   : 4.00   radio/TV           :61  
+##  moderate:64      1st Qu.: 1308   1st Qu.:12.00   car                :53  
+##  rich    :17      Median : 2261   Median :18.00   furniture/equipment:42  
+##  NA&#39;s    :73      Mean   : 3157   Mean   :20.43   business           :21  
+##                   3rd Qu.: 4003   3rd Qu.:24.00   education          :13  
+##                   Max.   :15672   Max.   :48.00   repairs            : 5  
+##                                                   (Other)            : 5  
+##    risk      installment    
+##  bad : 60   Min.   : 38.12  
+##  good:140   1st Qu.: 93.12  
+##             Median :127.23  
+##             Mean   :162.62  
+##             3rd Qu.:206.21  
+##             Max.   :730.80  
+## </code></pre>
+<p>Wykorzystując tak przygotowane dane możemy jeszcze raz wykorzystać drzewa decyzyjne do stworzenia klasyfikatora, ale tym razem wyłącznie na zbiorze treningowym.</p>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1">m2 &lt;-<span class="st"> </span><span class="kw">rpart</span>(risk <span class="op">~</span><span class="st"> </span>., train_credit)</a>
+<a class="sourceLine" id="cb99-2" title="2"></a>
+<a class="sourceLine" id="cb99-3" title="3"><span class="kw">rpart.plot</span>(m2)</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<p>Utworzone drzewo będzie różnić się od tego, które powstało na podstawie całego zbioru danych. Następnie obliczamy prognozowane klasy na obu zbiorach i wyznaczamy macierze pomyłek.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1">pred_risk_m2_train &lt;-<span class="st"> </span><span class="kw">predict</span>(<span class="dt">object =</span> m2, <span class="dt">newdata =</span> train_credit, <span class="dt">type =</span> <span class="st">&quot;class&quot;</span>)</a>
+<a class="sourceLine" id="cb100-2" title="2">pred_risk_m2_valid &lt;-<span class="st"> </span><span class="kw">predict</span>(<span class="dt">object =</span> m2, <span class="dt">newdata =</span> valid_credit, <span class="dt">type =</span> <span class="st">&quot;class&quot;</span>)</a>
+<a class="sourceLine" id="cb100-3" title="3"></a>
+<a class="sourceLine" id="cb100-4" title="4"><span class="co"># train</span></a>
+<a class="sourceLine" id="cb100-5" title="5"><span class="kw">confusionMatrix</span>(<span class="dt">data =</span> pred_risk_m2_train, <span class="dt">reference =</span> train_credit<span class="op">$</span>risk, </a>
+<a class="sourceLine" id="cb100-6" title="6">                <span class="dt">positive =</span> <span class="st">&quot;good&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;everything&quot;</span>)</a></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction bad good
+##       bad   94   38
+##       good 146  522
+##                                           
+##                Accuracy : 0.77            
+##                  95% CI : (0.7392, 0.7987)
+##     No Information Rate : 0.7             
+##     P-Value [Acc &gt; NIR] : 5.783e-06       
+##                                           
+##                   Kappa : 0.3716          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 3.067e-15       
+##                                           
+##             Sensitivity : 0.9321          
+##             Specificity : 0.3917          
+##          Pos Pred Value : 0.7814          
+##          Neg Pred Value : 0.7121          
+##               Precision : 0.7814          
+##                  Recall : 0.9321          
+##                      F1 : 0.8502          
+##              Prevalence : 0.7000          
+##          Detection Rate : 0.6525          
+##    Detection Prevalence : 0.8350          
+##       Balanced Accuracy : 0.6619          
+##                                           
+##        &#39;Positive&#39; Class : good            
+## </code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1"><span class="co"># valid</span></a>
+<a class="sourceLine" id="cb102-2" title="2"><span class="kw">confusionMatrix</span>(<span class="dt">data =</span> pred_risk_m2_valid, <span class="dt">reference =</span> valid_credit<span class="op">$</span>risk, </a>
+<a class="sourceLine" id="cb102-3" title="3">                <span class="dt">positive =</span> <span class="st">&quot;good&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;everything&quot;</span>)</a></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction bad good
+##       bad   18   11
+##       good  42  129
+##                                           
+##                Accuracy : 0.735           
+##                  95% CI : (0.6681, 0.7948)
+##     No Information Rate : 0.7             
+##     P-Value [Acc &gt; NIR] : 0.1579          
+##                                           
+##                   Kappa : 0.2598          
+##                                           
+##  Mcnemar&#39;s Test P-Value : 0.00003775      
+##                                           
+##             Sensitivity : 0.9214          
+##             Specificity : 0.3000          
+##          Pos Pred Value : 0.7544          
+##          Neg Pred Value : 0.6207          
+##               Precision : 0.7544          
+##                  Recall : 0.9214          
+##                      F1 : 0.8296          
+##              Prevalence : 0.7000          
+##          Detection Rate : 0.6450          
+##    Detection Prevalence : 0.8550          
+##       Balanced Accuracy : 0.6107          
+##                                           
+##        &#39;Positive&#39; Class : good            
+## </code></pre>
+<p>Generalnie wyniki w obu przypadkach powinny być do siebie zbliżone, przy czym na zbiorze walidacyjnym miary jakości predycji mogą być trochę gorsze. Bardzo wysoka wartość dokładność na zbiorze treningowym, a niska na zbiorze walidacyjnym jest symptomem przeuczenia modelu - algorytm nauczył się odpowiedzi “na pamięć”.</p>
+</div>
+<div id="gradient-boosting-machine" class="section level2">
+<h2><span class="header-section-number">5.3</span> Gradient Boosting Machine</h2>
+<p>Spróbujemy polepszyć jakość klasyfikacji z wykorzystaniem metody gradient boostingu. W tym celu wykorzystamy pakiet <a href="https://www.h2o.ai/">h2o</a>, który dostarcza kompleksowych rozwiązań z zakresu machine learning. W pierwszej kolejności trzeba zmienić format danych na ten obsługowany przez pakiet.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1"><span class="kw">library</span>(h2o)</a>
+<a class="sourceLine" id="cb104-2" title="2"></a>
+<a class="sourceLine" id="cb104-3" title="3"><span class="kw">h2o.init</span>()</a></code></pre></div>
+<pre><code>## 
+## H2O is not running yet, starting it now...
+## 
+## Note:  In case of errors look at the following log files:
+##     C:\Users\lukas\AppData\Local\Temp\RtmpqezXOo\file17a467324088/h2o_lukas_started_from_r.out
+##     C:\Users\lukas\AppData\Local\Temp\RtmpqezXOo\file17a419754323/h2o_lukas_started_from_r.err
+## 
+## 
+## Starting H2O JVM and connecting: . Connection successful!
+## 
+## R is connected to the H2O cluster: 
+##     H2O cluster uptime:         5 seconds 23 milliseconds 
+##     H2O cluster timezone:       Europe/Warsaw 
+##     H2O data parsing timezone:  UTC 
+##     H2O cluster version:        3.30.0.1 
+##     H2O cluster version age:    2 months  
+##     H2O cluster name:           H2O_started_from_R_lukas_xpm862 
+##     H2O cluster total nodes:    1 
+##     H2O cluster total memory:   3.98 GB 
+##     H2O cluster total cores:    8 
+##     H2O cluster allowed cores:  8 
+##     H2O cluster healthy:        TRUE 
+##     H2O Connection ip:          localhost 
+##     H2O Connection port:        54321 
+##     H2O Connection proxy:       NA 
+##     H2O Internal Security:      FALSE 
+##     H2O API Extensions:         Amazon S3, Algos, AutoML, Core V3, TargetEncoder, Core V4 
+##     R Version:                  R version 4.0.0 (2020-04-24)</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1"><span class="kw">h2o.no_progress</span>() <span class="co"># brak pasków postępu</span></a>
+<a class="sourceLine" id="cb106-2" title="2"></a>
+<a class="sourceLine" id="cb106-3" title="3">train_credit_h2o &lt;-<span class="st"> </span><span class="kw">as.h2o</span>(train_credit)</a>
+<a class="sourceLine" id="cb106-4" title="4">valid_credit_h2o &lt;-<span class="st"> </span><span class="kw">as.h2o</span>(valid_credit)</a></code></pre></div>
+<p>Następnie deklarujemy nazwy wykorzystywanych zmiennych i uruchamiamy procedurę:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1">y_var &lt;-<span class="st"> &quot;risk&quot;</span></a>
+<a class="sourceLine" id="cb107-2" title="2">x_var &lt;-<span class="st"> </span><span class="kw">names</span>(credit)[<span class="op">-</span><span class="dv">10</span>]</a>
+<a class="sourceLine" id="cb107-3" title="3"></a>
+<a class="sourceLine" id="cb107-4" title="4">m3 &lt;-<span class="st"> </span><span class="kw">h2o.gbm</span>(<span class="dt">x =</span> x_var, </a>
+<a class="sourceLine" id="cb107-5" title="5">              <span class="dt">y =</span> y_var, </a>
+<a class="sourceLine" id="cb107-6" title="6">              <span class="dt">training_frame =</span> train_credit_h2o, </a>
+<a class="sourceLine" id="cb107-7" title="7">              <span class="dt">validation_frame =</span> valid_credit_h2o, </a>
+<a class="sourceLine" id="cb107-8" title="8">              <span class="dt">seed =</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb107-9" title="9"></a>
+<a class="sourceLine" id="cb107-10" title="10">m3</a></code></pre></div>
+<pre><code>## Model Details:
+## ==============
+## 
+## H2OBinomialModel: gbm
+## Model ID:  GBM_model_R_1591256341659_1 
+## Model Summary: 
+##   number_of_trees number_of_internal_trees model_size_in_bytes min_depth
+## 1              50                       50               13916         5
+##   max_depth mean_depth min_leaves max_leaves mean_leaves
+## 1         5    5.00000          7         26    17.66000
+## 
+## 
+## H2OBinomialMetrics: gbm
+## ** Reported on training data. **
+## 
+## MSE:  0.07736868
+## RMSE:  0.2781523
+## LogLoss:  0.2767961
+## Mean Per-Class Error:  0.09880952
+## AUC:  0.9704167
+## AUCPR:  0.9862121
+## Gini:  0.9408333
+## R^2:  0.6315777
+## 
+## Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
+##        bad good    Error     Rate
+## bad    202   38 0.158333  =38/240
+## good    22  538 0.039286  =22/560
+## Totals 224  576 0.075000  =60/800
+## 
+## Maximum Metrics: Maximum metrics at their respective thresholds
+##                         metric threshold      value idx
+## 1                       max f1  0.568378   0.947183 232
+## 2                       max f2  0.425774   0.965217 277
+## 3                 max f0point5  0.642867   0.951409 205
+## 4                 max accuracy  0.576117   0.925000 228
+## 5                max precision  0.985657   1.000000   0
+## 6                   max recall  0.314379   1.000000 319
+## 7              max specificity  0.985657   1.000000   0
+## 8             max absolute_mcc  0.576117   0.819649 228
+## 9   max min_per_class_accuracy  0.644367   0.912500 204
+## 10 max mean_per_class_accuracy  0.642867   0.914286 205
+## 11                     max tns  0.985657 240.000000   0
+## 12                     max fns  0.985657 559.000000   0
+## 13                     max fps  0.039037 240.000000 399
+## 14                     max tps  0.314379 560.000000 319
+## 15                     max tnr  0.985657   1.000000   0
+## 16                     max fnr  0.985657   0.998214   0
+## 17                     max fpr  0.039037   1.000000 399
+## 18                     max tpr  0.314379   1.000000 319
+## 
+## Gains/Lift Table: Extract with `h2o.gainsLift(&lt;model&gt;, &lt;data&gt;)` or `h2o.gainsLift(&lt;model&gt;, valid=&lt;T/F&gt;, xval=&lt;T/F&gt;)`
+## H2OBinomialMetrics: gbm
+## ** Reported on validation data. **
+## 
+## MSE:  0.1742677
+## RMSE:  0.4174538
+## LogLoss:  0.5334558
+## Mean Per-Class Error:  0.4166667
+## AUC:  0.7427381
+## AUCPR:  0.8549562
+## Gini:  0.4854762
+## R^2:  0.1701539
+## 
+## Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
+##        bad good    Error     Rate
+## bad     10   50 0.833333   =50/60
+## good     0  140 0.000000   =0/140
+## Totals  10  190 0.250000  =50/200
+## 
+## Maximum Metrics: Maximum metrics at their respective thresholds
+##                         metric threshold      value idx
+## 1                       max f1  0.251100   0.848485 189
+## 2                       max f2  0.251100   0.933333 189
+## 3                 max f0point5  0.586949   0.823864 140
+## 4                 max accuracy  0.540278   0.760000 149
+## 5                max precision  0.977718   1.000000   0
+## 6                   max recall  0.251100   1.000000 189
+## 7              max specificity  0.977718   1.000000   0
+## 8             max absolute_mcc  0.586949   0.413905 140
+## 9   max min_per_class_accuracy  0.726448   0.700000 115
+## 10 max mean_per_class_accuracy  0.586949   0.705952 140
+## 11                     max tns  0.977718  60.000000   0
+## 12                     max fns  0.977718 139.000000   0
+## 13                     max fps  0.074617  60.000000 199
+## 14                     max tps  0.251100 140.000000 189
+## 15                     max tnr  0.977718   1.000000   0
+## 16                     max fnr  0.977718   0.992857   0
+## 17                     max fpr  0.074617   1.000000 199
+## 18                     max tpr  0.251100   1.000000 189
+## 
+## Gains/Lift Table: Extract with `h2o.gainsLift(&lt;model&gt;, &lt;data&gt;)` or `h2o.gainsLift(&lt;model&gt;, valid=&lt;T/F&gt;, xval=&lt;T/F&gt;)`</code></pre>
+<p>Z funkcji pakietu h2o dostajemy pokaźny wydruk podsumowania klasyfikacji wraz z macierzami pomyłek. Pakiet h2o optymalizuje jakość predycji maksymalizująć miarę F1 - średnią harmoniczną czułości i swoistości. Zatem w tym przypadku podział na klasy wg prawdopodobieństwa nie odbywa się już na podstawie wartości 0,5.</p>
+<p>Stworzymy macierz pomyłek dla zbioru walidacyjnego w tym samym formacie, co wcześniej:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1">pred_risk_m3_valid &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">h2o.predict</span>(<span class="dt">object =</span> m3, <span class="dt">newdata =</span> valid_credit_h2o))</a>
+<a class="sourceLine" id="cb109-2" title="2"></a>
+<a class="sourceLine" id="cb109-3" title="3"><span class="kw">confusionMatrix</span>(<span class="dt">data =</span> pred_risk_m3_valid<span class="op">$</span>predict, <span class="dt">reference =</span> valid_credit<span class="op">$</span>risk, </a>
+<a class="sourceLine" id="cb109-4" title="4">                <span class="dt">positive =</span> <span class="st">&quot;good&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;everything&quot;</span>)</a></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction bad good
+##       bad   10    0
+##       good  50  140
+##                                          
+##                Accuracy : 0.75           
+##                  95% CI : (0.684, 0.8084)
+##     No Information Rate : 0.7            
+##     P-Value [Acc &gt; NIR] : 0.06955        
+##                                          
+##                   Kappa : 0.2188         
+##                                          
+##  Mcnemar&#39;s Test P-Value : 4.219e-12      
+##                                          
+##             Sensitivity : 1.0000         
+##             Specificity : 0.1667         
+##          Pos Pred Value : 0.7368         
+##          Neg Pred Value : 1.0000         
+##               Precision : 0.7368         
+##                  Recall : 1.0000         
+##                      F1 : 0.8485         
+##              Prevalence : 0.7000         
+##          Detection Rate : 0.7000         
+##    Detection Prevalence : 0.9500         
+##       Balanced Accuracy : 0.5833         
+##                                          
+##        &#39;Positive&#39; Class : good           
+## </code></pre>
+<p>Możemy zauważyć nieznaczną poprawę dokładności predykcji w porównaniu do drzewa decyzyjnego - z 73,5% do 75%. Natomiast ten algorytm został uruchomiony z domyślnymi parametrami i być może wybór innych wartości mógłby poprawić jakość predykcji. Poszukiwania najlepszych wartości do algorytmu nosi nazwę tuningu hiperparametrów. Z racji tego, że przeszukiwana przestrzeń parametrów mogłaby być bardzo duża to z reguły przeprowadza się to w sposób losowy. Poniżej lista możliwych do zastosowania parametrów w metodzie GBM.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1">gbm_params &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">learn_rate =</span> <span class="kw">seq</span>(<span class="fl">0.01</span>, <span class="fl">0.1</span>, <span class="fl">0.01</span>),</a>
+<a class="sourceLine" id="cb111-2" title="2">                   <span class="dt">max_depth =</span> <span class="kw">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb111-3" title="3">                   <span class="dt">sample_rate =</span> <span class="kw">seq</span>(<span class="fl">0.5</span>, <span class="fl">1.0</span>, <span class="fl">0.1</span>),</a>
+<a class="sourceLine" id="cb111-4" title="4">                   <span class="dt">col_sample_rate =</span> <span class="kw">seq</span>(<span class="fl">0.1</span>, <span class="fl">1.0</span>, <span class="fl">0.1</span>),</a>
+<a class="sourceLine" id="cb111-5" title="5">                   <span class="dt">ntrees =</span> <span class="kw">seq</span>(<span class="dv">50</span>,<span class="dv">150</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb111-6" title="6"></a>
+<a class="sourceLine" id="cb111-7" title="7">search_criteria &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">strategy =</span> <span class="st">&quot;RandomDiscrete&quot;</span>, <span class="dt">max_models =</span> <span class="dv">36</span>, <span class="dt">seed =</span> <span class="dv">1</span>)</a></code></pre></div>
+<p>Wszystkich kombinacji parametrów jest 59400 i weryfikacja ich wszystkich zajęła by sporo czasu, zatem w sposób losowy szukamy najlepszych 36 modeli. Z tego zestawu wybieramy najlepszy według kryterium jakim jest miara AUC.</p>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1">gbm_grid &lt;-<span class="st"> </span><span class="kw">h2o.grid</span>(<span class="dt">algorithm =</span> <span class="st">&quot;gbm&quot;</span>, </a>
+<a class="sourceLine" id="cb112-2" title="2">                     <span class="dt">x =</span> x_var, </a>
+<a class="sourceLine" id="cb112-3" title="3">                     <span class="dt">y =</span> y_var,</a>
+<a class="sourceLine" id="cb112-4" title="4">                     <span class="dt">grid_id =</span> <span class="st">&quot;gbm_grid&quot;</span>,</a>
+<a class="sourceLine" id="cb112-5" title="5">                     <span class="dt">training_frame =</span> train_credit_h2o,</a>
+<a class="sourceLine" id="cb112-6" title="6">                     <span class="dt">validation_frame =</span> valid_credit_h2o,</a>
+<a class="sourceLine" id="cb112-7" title="7">                     <span class="dt">seed =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb112-8" title="8">                     <span class="dt">hyper_params =</span> gbm_params,</a>
+<a class="sourceLine" id="cb112-9" title="9">                     <span class="dt">search_criteria =</span> search_criteria)</a>
+<a class="sourceLine" id="cb112-10" title="10"></a>
+<a class="sourceLine" id="cb112-11" title="11">gbm_gridperf &lt;-<span class="st"> </span><span class="kw">h2o.getGrid</span>(<span class="dt">grid_id =</span> <span class="st">&quot;gbm_grid&quot;</span>,</a>
+<a class="sourceLine" id="cb112-12" title="12">                            <span class="dt">sort_by =</span> <span class="st">&quot;auc&quot;</span>,</a>
+<a class="sourceLine" id="cb112-13" title="13">                            <span class="dt">decreasing =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb112-14" title="14"></a>
+<a class="sourceLine" id="cb112-15" title="15">m4 &lt;-<span class="st"> </span><span class="kw">h2o.getModel</span>(gbm_gridperf<span class="op">@</span>model_ids[[<span class="dv">1</span>]])</a>
+<a class="sourceLine" id="cb112-16" title="16"></a>
+<a class="sourceLine" id="cb112-17" title="17">m4</a></code></pre></div>
+<pre><code>## Model Details:
+## ==============
+## 
+## H2OBinomialModel: gbm
+## Model ID:  gbm_grid_model_5 
+## Model Summary: 
+##   number_of_trees number_of_internal_trees model_size_in_bytes min_depth
+## 1             120                      120               12698         2
+##   max_depth mean_depth min_leaves max_leaves mean_leaves
+## 1         2    2.00000          3          4     3.76667
+## 
+## 
+## H2OBinomialMetrics: gbm
+## ** Reported on training data. **
+## 
+## MSE:  0.1334539
+## RMSE:  0.3653134
+## LogLoss:  0.4219445
+## Mean Per-Class Error:  0.2815476
+## AUC:  0.864189
+## AUCPR:  0.9295413
+## Gini:  0.728378
+## R^2:  0.3645055
+## 
+## Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
+##        bad good    Error      Rate
+## bad    116  124 0.516667  =124/240
+## good    26  534 0.046429   =26/560
+## Totals 142  658 0.187500  =150/800
+## 
+## Maximum Metrics: Maximum metrics at their respective thresholds
+##                         metric threshold      value idx
+## 1                       max f1  0.453501   0.876847 293
+## 2                       max f2  0.348504   0.936760 331
+## 3                 max f0point5  0.664520   0.875585 205
+## 4                 max accuracy  0.592649   0.813750 241
+## 5                max precision  0.980677   1.000000   0
+## 6                   max recall  0.241302   1.000000 371
+## 7              max specificity  0.980677   1.000000   0
+## 8             max absolute_mcc  0.592649   0.554980 241
+## 9   max min_per_class_accuracy  0.672199   0.791667 201
+## 10 max mean_per_class_accuracy  0.664520   0.792560 205
+## 11                     max tns  0.980677 240.000000   0
+## 12                     max fns  0.980677 559.000000   0
+## 13                     max fps  0.061527 240.000000 399
+## 14                     max tps  0.241302 560.000000 371
+## 15                     max tnr  0.980677   1.000000   0
+## 16                     max fnr  0.980677   0.998214   0
+## 17                     max fpr  0.061527   1.000000 399
+## 18                     max tpr  0.241302   1.000000 371
+## 
+## Gains/Lift Table: Extract with `h2o.gainsLift(&lt;model&gt;, &lt;data&gt;)` or `h2o.gainsLift(&lt;model&gt;, valid=&lt;T/F&gt;, xval=&lt;T/F&gt;)`
+## H2OBinomialMetrics: gbm
+## ** Reported on validation data. **
+## 
+## MSE:  0.1748702
+## RMSE:  0.4181749
+## LogLoss:  0.5258534
+## Mean Per-Class Error:  0.372619
+## AUC:  0.7510714
+## AUCPR:  0.8714774
+## Gini:  0.5021429
+## R^2:  0.1672846
+## 
+## Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
+##        bad good    Error     Rate
+## bad     17   43 0.716667   =43/60
+## good     4  136 0.028571   =4/140
+## Totals  21  179 0.235000  =47/200
+## 
+## Maximum Metrics: Maximum metrics at their respective thresholds
+##                         metric threshold      value idx
+## 1                       max f1  0.394104   0.852665 178
+## 2                       max f2  0.267676   0.925926 195
+## 3                 max f0point5  0.593941   0.821429 139
+## 4                 max accuracy  0.524700   0.765000 158
+## 5                max precision  0.975876   1.000000   0
+## 6                   max recall  0.267676   1.000000 195
+## 7              max specificity  0.975876   1.000000   0
+## 8             max absolute_mcc  0.593941   0.404762 139
+## 9   max min_per_class_accuracy  0.716329   0.650000 110
+## 10 max mean_per_class_accuracy  0.593941   0.702381 139
+## 11                     max tns  0.975876  60.000000   0
+## 12                     max fns  0.975876 139.000000   0
+## 13                     max fps  0.145726  60.000000 199
+## 14                     max tps  0.267676 140.000000 195
+## 15                     max tnr  0.975876   1.000000   0
+## 16                     max fnr  0.975876   0.992857   0
+## 17                     max fpr  0.145726   1.000000 199
+## 18                     max tpr  0.267676   1.000000 195
+## 
+## Gains/Lift Table: Extract with `h2o.gainsLift(&lt;model&gt;, &lt;data&gt;)` or `h2o.gainsLift(&lt;model&gt;, valid=&lt;T/F&gt;, xval=&lt;T/F&gt;)`</code></pre>
+<p>Standardowo utworzymy macierz pomyłek i obliczymy pozostałe miary:</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1">pred_risk_m4_valid &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">h2o.predict</span>(<span class="dt">object =</span> m4, <span class="dt">newdata =</span> valid_credit_h2o))</a>
+<a class="sourceLine" id="cb114-2" title="2"></a>
+<a class="sourceLine" id="cb114-3" title="3"><span class="kw">confusionMatrix</span>(<span class="dt">data =</span> pred_risk_m4_valid<span class="op">$</span>predict, <span class="dt">reference =</span> valid_credit<span class="op">$</span>risk, </a>
+<a class="sourceLine" id="cb114-4" title="4">                <span class="dt">positive =</span> <span class="st">&quot;good&quot;</span>, <span class="dt">mode =</span> <span class="st">&quot;everything&quot;</span>)</a></code></pre></div>
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction bad good
+##       bad   17    4
+##       good  43  136
+##                                        
+##                Accuracy : 0.765        
+##                  95% CI : (0.7, 0.8219)
+##     No Information Rate : 0.7          
+##     P-Value [Acc &gt; NIR] : 0.02493      
+##                                        
+##                   Kappa : 0.3129       
+##                                        
+##  Mcnemar&#39;s Test P-Value : 0.00000002976
+##                                        
+##             Sensitivity : 0.9714       
+##             Specificity : 0.2833       
+##          Pos Pred Value : 0.7598       
+##          Neg Pred Value : 0.8095       
+##               Precision : 0.7598       
+##                  Recall : 0.9714       
+##                      F1 : 0.8527       
+##              Prevalence : 0.7000       
+##          Detection Rate : 0.6800       
+##    Detection Prevalence : 0.8950       
+##       Balanced Accuracy : 0.6274       
+##                                        
+##        &#39;Positive&#39; Class : good         
+## </code></pre>
+<p>Finalny model charakteryzuje się dokładnością na poziomie 76,5%, zatem udało się poprawić jego jakość w porównaniu do drzewa decyzyjnego oraz wersji GBM z domyślnymi parametrami.</p>
+<p>Innym sposobem oceny jakości modelu jest symulacja wyniku biznesowego na podstawie kosztów dla każdej komórki macierzy pomyłek. W naszym przypadku przyjmiemy bardzo uproszczone miary: średnia kwota kredytu: 3500, marża na spłaconym kredycie: 20%, strata na niespłaconym kredycie: 50%.</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="co"># m2</span></a>
+<a class="sourceLine" id="cb116-2" title="2"><span class="dv">42</span><span class="op">*-</span>(<span class="dv">3500</span><span class="op">*</span><span class="fl">0.5</span>)<span class="op">+</span><span class="dv">129</span><span class="op">*</span>(<span class="dv">3500</span><span class="op">*</span><span class="fl">0.2</span>)</a></code></pre></div>
+<pre><code>## [1] 16800</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="co"># m3</span></a>
+<a class="sourceLine" id="cb118-2" title="2"><span class="dv">50</span><span class="op">*-</span>(<span class="dv">3500</span><span class="op">*</span><span class="fl">0.5</span>)<span class="op">+</span><span class="dv">140</span><span class="op">*</span>(<span class="dv">3500</span><span class="op">*</span><span class="fl">0.2</span>)</a></code></pre></div>
+<pre><code>## [1] 10500</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="co"># m4</span></a>
+<a class="sourceLine" id="cb120-2" title="2"><span class="dv">43</span><span class="op">*-</span>(<span class="dv">3500</span><span class="op">*</span><span class="fl">0.5</span>)<span class="op">+</span><span class="dv">136</span><span class="op">*</span>(<span class="dv">3500</span><span class="op">*</span><span class="fl">0.2</span>)</a></code></pre></div>
+<pre><code>## [1] 19950</code></pre>
+<p>Największą korzyść uzyskamy korzystając z modelu <code>m4</code>.</p>
+<p>Jakość predykcji możemy także spróbować poprawić manewrując progiem prawdopodobieństwa klasyfikacji. Narzędziem, które może w tym pomóc jest krzywa ROC, która przestawia wartości czułości i swoistości dla różnych progów.</p>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1"><span class="kw">plot</span>(<span class="kw">h2o.performance</span>(m4, <span class="dt">valid =</span> T), <span class="dt">type =</span> <span class="st">&quot;roc&quot;</span>)</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
+<p>Przekątna przedstawia klasyfikator losowy, natomiast punkty leżące powyżej to klasyfikatory lepsze od losowego. Klasyfikator idealny byłby krzywą o następującym przebiegu (0,0) -&gt; (0,1) -&gt; (1,1). Pole pod krzywą ROC jest także miarą jakości klasyfikacji - AUC, której wysokie wartości są pożądane.</p>
+<p>Zastosowany przez nas model GBM jest pewną czarną skrzynką, zatem nie wiadomo dokładnie na podstawie jakich reguł ta klasyfikacja przebiega, ale możemy wykorzystać pewne miary tzw. Explainable AI w celu opisu modelu.</p>
+<p>Pierwszą z nich jest ważność cech, która określa jak bardzo model wykorzystuje daną cechę do predycji.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1"><span class="kw">h2o.varimp</span>(m4)</a></code></pre></div>
+<pre><code>## Variable Importances: 
+##            variable relative_importance scaled_importance percentage
+## 1  checking_account          139.643494          1.000000   0.357454
+## 2       installment           50.473244          0.361444   0.129199
+## 3     credit_amount           47.960758          0.343451   0.122768
+## 4          duration           47.067211          0.337053   0.120481
+## 5   saving_accounts           37.750511          0.270335   0.096632
+## 6               age           22.097424          0.158242   0.056564
+## 7           purpose           21.087355          0.151009   0.053979
+## 8               sex            9.506948          0.068080   0.024336
+## 9               job            9.458730          0.067735   0.024212
+## 10          housing            5.615641          0.040214   0.014375</code></pre>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1"><span class="kw">h2o.varimp_plot</span>(m4)</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
+<p>Na tej podstawie możemy stwierdzić, że najważniejszą cechą mającą wpływ na klasyfikację jest checking_account. Na kolejnych miejscach jest installment oraz credit_amount. Najmniej ważna jest zmienna housing.</p>
+<p>Innym metodem opisu działania modelu jest partial dependency plot, przedstawiający zależność prawdopodobieństwa klasyfikacji od wartości danej cechy niezależnej.</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="kw">h2o.partialPlot</span>(<span class="dt">object =</span> m4, <span class="dt">data =</span> valid_credit_h2o, <span class="dt">cols =</span> <span class="kw">c</span>(<span class="st">&quot;checking_account&quot;</span>,<span class="st">&quot;credit_amount&quot;</span>))</a></code></pre></div>
+<p><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-77-1.png" width="672" /><img src="Wawrowski_ADR_files/figure-html/unnamed-chunk-77-2.png" width="672" /></p>
+<pre><code>## [[1]]
+## PartialDependence: Partial Dependence Plot of model gbm_grid_model_5 on column &#39;checking_account&#39;
+##   checking_account mean_response stddev_response std_error_mean_response
+## 1           little      0.592628        0.181815                0.012856
+## 2         moderate      0.631352        0.175209                0.012389
+## 3             rich      0.805179        0.112347                0.007944
+## 
+## [[2]]
+## PartialDependence: Partial Dependence Plot of model gbm_grid_model_5 on column &#39;credit_amount&#39;
+##    credit_amount mean_response stddev_response std_error_mean_response
+## 1     250.000000      0.820332        0.154227                0.010906
+## 2    1061.684211      0.730765        0.191768                0.013560
+## 3    1873.368421      0.734501        0.193015                0.013648
+## 4    2685.052632      0.734501        0.193015                0.013648
+## 5    3496.736842      0.734501        0.193015                0.013648
+## 6    4308.421053      0.657226        0.210794                0.014905
+## 7    5120.105263      0.671696        0.207253                0.014655
+## 8    5931.789474      0.694055        0.200533                0.014180
+## 9    6743.473684      0.612077        0.227734                0.016103
+## 10   7555.157895      0.672663        0.214299                0.015153
+## 11   8366.842105      0.584453        0.229101                0.016200
+## 12   9178.526316      0.584453        0.229101                0.016200
+## 13   9990.210526      0.612714        0.224460                0.015872
+## 14  10801.894737      0.612714        0.224460                0.015872
+## 15  11613.578947      0.505658        0.240544                0.017009
+## 16  12425.263158      0.471080        0.233110                0.016483
+## 17  13236.947368      0.471080        0.233110                0.016483
+## 18  14048.631579      0.485184        0.233632                0.016520
+## 19  14860.315789      0.485184        0.233632                0.016520
+## 20  15672.000000      0.485184        0.233632                0.016520</code></pre>
+<p>W tym przypadku możemy zaobserwować, że im klient bogatszy tym większa szansa na klasyfikację do grupy wiarygodnych kredytobiorców. Z kolei wraz ze wzrostem wysokości kredytu to prawdopodobieństwo maleje.</p>
+<div id="zadania-1" class="section level3">
+<h3><span class="header-section-number">5.3.1</span> Zadania</h3>
+<ol style="list-style-type: decimal">
+<li>Sprawdź jak model będzie się sprawdzał na danych, w których braki danych są traktowane jako osobna kategoria:</li>
+</ol>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1">credit_wna &lt;-<span class="st"> </span>credit <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate_at</span>(<span class="kw">c</span>(<span class="st">&quot;saving_accounts&quot;</span>, <span class="st">&quot;checking_account&quot;</span>), fct_explicit_na)</a></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Na podstawie charakterystyki <a href="http://www.wawrowski.edu.pl/data/sf_ny_homes.csv">mieszkań</a> przeprowadź klasyfikację ich umiejscowienia - San Francisco vs. New York.</li>
+</ol>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1">homes &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;http://www.wawrowski.edu.pl/data/sf_ny_homes.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb129-2" title="2"></a>
+<a class="sourceLine" id="cb129-3" title="3">homes &lt;-<span class="st"> </span>homes <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb129-4" title="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">in_sf=</span><span class="kw">as.factor</span>(in_sf))</a></code></pre></div>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="grupowanie.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Wawrowski_ADR.pdf", "Wawrowski_ADR.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
