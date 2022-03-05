@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Struktury danych | Podstawy programowania R</title>
   <meta name="description" content="Materiały dydaktyczne do kursu Podstawy programowania." />
-  <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Struktury danych | Podstawy programowania R" />
   <meta property="og:type" content="book" />
@@ -32,8 +32,9 @@
   
 <link rel="prev" href="wprowadzenie-do-r.html"/>
 <link rel="next" href="przetwarzanie-danych.html"/>
-<script src="libs/header-attrs-2.3/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -49,14 +50,15 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -117,6 +119,7 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Wprowadzenie</a></li>
 <li class="chapter" data-level="1" data-path="wprowadzenie-do-r.html"><a href="wprowadzenie-do-r.html"><i class="fa fa-check"></i><b>1</b> Wprowadzenie do R</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#wprowadzenie"><i class="fa fa-check"></i><b>1.1</b> Wprowadzenie</a></li>
+<li class="chapter" data-level="1.1" data-path="wprowadzenie-do-r.html"><a href="wprowadzenie-do-r.html#wprowadzenie-1"><i class="fa fa-check"></i><b>1.1</b> Wprowadzenie</a></li>
 <li class="chapter" data-level="1.2" data-path="wprowadzenie-do-r.html"><a href="wprowadzenie-do-r.html#r"><i class="fa fa-check"></i><b>1.2</b> R</a></li>
 <li class="chapter" data-level="1.3" data-path="wprowadzenie-do-r.html"><a href="wprowadzenie-do-r.html#rstudio"><i class="fa fa-check"></i><b>1.3</b> RStudio</a></li>
 <li class="chapter" data-level="1.4" data-path="wprowadzenie-do-r.html"><a href="wprowadzenie-do-r.html#ważne-informacje"><i class="fa fa-check"></i><b>1.4</b> Ważne informacje</a></li>
@@ -193,12 +196,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.10" data-path="przetwarzanie-danych.html"><a href="przetwarzanie-danych.html#łączenie-zbiorów"><i class="fa fa-check"></i><b>3.10</b> Łączenie zbiorów</a></li>
 <li class="chapter" data-level="3.11" data-path="przetwarzanie-danych.html"><a href="przetwarzanie-danych.html#szeroka-i-wąska-reprezentacja-danych"><i class="fa fa-check"></i><b>3.11</b> Szeroka i wąska reprezentacja danych</a></li>
 <li class="chapter" data-level="3.12" data-path="przetwarzanie-danych.html"><a href="przetwarzanie-danych.html#eksport-danych"><i class="fa fa-check"></i><b>3.12</b> Eksport danych</a></li>
-<li class="chapter" data-level="3.13" data-path="struktury-danych.html"><a href="struktury-danych.html#zadania"><i class="fa fa-check"></i><b>3.13</b> Zadania</a></li>
+<li class="chapter" data-level="3.13" data-path="przetwarzanie-danych.html"><a href="przetwarzanie-danych.html#zadania-2"><i class="fa fa-check"></i><b>3.13</b> Zadania</a></li>
 <li class="chapter" data-level="3.14" data-path="przetwarzanie-danych.html"><a href="przetwarzanie-danych.html#case-study"><i class="fa fa-check"></i><b>3.14</b> Case study</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="wizualizacja-danych.html"><a href="wizualizacja-danych.html"><i class="fa fa-check"></i><b>4</b> Wizualizacja danych</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="index.html"><a href="index.html#wprowadzenie"><i class="fa fa-check"></i><b>4.1</b> Wprowadzenie</a></li>
+<li class="chapter" data-level="4.1" data-path="wizualizacja-danych.html"><a href="wizualizacja-danych.html#wprowadzenie-2"><i class="fa fa-check"></i><b>4.1</b> Wprowadzenie</a></li>
 <li class="chapter" data-level="4.2" data-path="wizualizacja-danych.html"><a href="wizualizacja-danych.html#wykres-punktowy"><i class="fa fa-check"></i><b>4.2</b> Wykres punktowy</a></li>
 <li class="chapter" data-level="4.3" data-path="wizualizacja-danych.html"><a href="wizualizacja-danych.html#histogram"><i class="fa fa-check"></i><b>4.3</b> Histogram</a></li>
 <li class="chapter" data-level="4.4" data-path="wizualizacja-danych.html"><a href="wizualizacja-danych.html#wykres-pudełkowy"><i class="fa fa-check"></i><b>4.4</b> Wykres pudełkowy</a></li>
@@ -261,68 +264,68 @@ obiekt -&gt; nazwa</code></pre>
 <div id="wektor-wartości-logicznych" class="section level3" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> Wektor wartości logicznych</h3>
 <p>Przyjmuje wartości <em>prawda</em> lub <em>fałsz</em>:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="struktury-danych.html#cb8-1"></a><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="struktury-danych.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE FALSE</code></pre>
 <p>lub w skróconej wersji:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="struktury-danych.html#cb10-1"></a><span class="kw">c</span>(T, F, F)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="struktury-danych.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(T, F, F)</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE FALSE</code></pre>
 <p>Do sprawdzenia długości wektora używa się funkcji <code>length</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="struktury-danych.html#cb12-1"></a><span class="kw">length</span>(<span class="kw">c</span>(T, F, F))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="struktury-danych.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">c</span>(T, F, F))</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>lub korzystając z obiektu nazwanego:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="struktury-danych.html#cb14-1"></a>wart_log &lt;-<span class="st"> </span><span class="kw">c</span>(T,F,F)</span>
-<span id="cb14-2"><a href="struktury-danych.html#cb14-2"></a><span class="kw">length</span>(wart_log)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="struktury-danych.html#cb14-1" aria-hidden="true" tabindex="-1"></a>wart_log <span class="ot">&lt;-</span> <span class="fu">c</span>(T,F,F)</span>
+<span id="cb14-2"><a href="struktury-danych.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(wart_log)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Wektory można także utworzyć poprzez replikację określonej wartości lub wektora z wykorzystaniem funkcji <code>rep</code>. Funkcja ta przyjmuje co najmniej dwa argumenty: obowiązkowo <code>x</code> - wektor wejściowy oraz jeden z następujących: <code>times</code> - liczba powtórzeń elementów wektora <code>x</code>, <code>each</code> - liczba powtórzeń elementów wektora <code>x</code> (wyjaśnienie różnicy poniżej) lub <code>length.out</code> - oczekiwana długość wektora wynikowego.</p>
 <p>Trzy równoważne zapisy:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="struktury-danych.html#cb16-1"></a><span class="kw">rep</span>(<span class="dt">x =</span> <span class="kw">c</span>(T,F), <span class="dt">times =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="struktury-danych.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="at">x =</span> <span class="fu">c</span>(T,F), <span class="at">times =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="struktury-danych.html#cb18-1"></a><span class="kw">rep</span>(<span class="kw">c</span>(T,F), <span class="dt">times =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="struktury-danych.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(T,F), <span class="at">times =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="struktury-danych.html#cb20-1"></a><span class="kw">rep</span>(<span class="kw">c</span>(T,F), <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="struktury-danych.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(T,F), <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE FALSE  TRUE FALSE</code></pre>
 <p>A tak to wygląda z argumentem <code>each</code>:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="struktury-danych.html#cb22-1"></a><span class="kw">rep</span>(<span class="kw">c</span>(T,F), <span class="dt">each =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="struktury-danych.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(T,F), <span class="at">each =</span> <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE</code></pre>
 <p>Wykorzystanie argumentu <code>length.out</code>:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="struktury-danych.html#cb24-1"></a><span class="kw">rep</span>(<span class="kw">c</span>(T,F), <span class="dt">length.out =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="struktury-danych.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(T,F), <span class="at">length.out =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1]  TRUE FALSE  TRUE FALSE  TRUE</code></pre>
 </div>
 <div id="wektor-wartości-liczbowych" class="section level3" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> Wektor wartości liczbowych</h3>
 <p>W wektorze możemy przechowywać także liczby:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="struktury-danych.html#cb26-1"></a><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">-5</span>, <span class="fl">2.5</span>, <span class="fl">.6</span>) <span class="co"># nie trzeba pisać zera przed ułamkiem</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="struktury-danych.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="fl">2.5</span>, .<span class="dv">6</span>) <span class="co"># nie trzeba pisać zera przed ułamkiem</span></span></code></pre></div>
 <pre><code>## [1]  1.0  3.0 -5.0  2.5  0.6</code></pre>
 <p>Połączenie dwóch wektorów to także wektor:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="struktury-danych.html#cb28-1"></a><span class="kw">c</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="kw">c</span>(<span class="fl">3.5</span>,<span class="dv">4</span>,<span class="fl">4.5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="struktury-danych.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="fu">c</span>(<span class="fl">3.5</span>,<span class="dv">4</span>,<span class="fl">4.5</span>))</span></code></pre></div>
 <pre><code>## [1] 1.0 2.0 3.0 3.5 4.0 4.5</code></pre>
 <p>Pojedyncza liczba też jest jednoelementowym wektorem:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="struktury-danych.html#cb30-1"></a><span class="kw">length</span>(<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="struktury-danych.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] 1</code></pre>
 <p>Proste ciągi o różnicy równej 1 można generować wykorzystując dwukropek:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="struktury-danych.html#cb32-1"></a><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="struktury-danych.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 <p>lub</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="struktury-danych.html#cb34-1"></a><span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span><span class="op">:-</span><span class="dv">1</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="struktury-danych.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="sc">-</span><span class="dv">5</span><span class="sc">:-</span><span class="dv">1</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span></code></pre></div>
 <pre><code>##  [1] -5 -4 -3 -2 -1  1  2  3  4  5</code></pre>
 <p>Do generowania ciągów liczbowych o różnych różnicach wykorzystuje się funkcję <code>seq</code>, która przyjmuje następujące argumenty. Wartość początkową <code>from</code>, wartość końcową <code>to</code> oraz jeden z następujących: <code>by</code> - krok lub <code>length.out</code> - oczekiwana długość wektora.</p>
 <p>To samo co <code>1:10</code></p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="struktury-danych.html#cb36-1"></a><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="struktury-danych.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 <p>Wartości niecałkowite:</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="struktury-danych.html#cb38-1"></a><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">0.2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="struktury-danych.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="fl">0.2</span>)</span></code></pre></div>
 <pre><code>## [1] 1.0 1.2 1.4 1.6 1.8 2.0</code></pre>
 <p>Wektor wartości malejących:</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="struktury-danych.html#cb40-1"></a><span class="kw">seq</span>(<span class="dv">10</span>, <span class="dv">1</span>, <span class="dt">by=</span><span class="dv">1</span>) <span class="co"># błędny zapis</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="struktury-danych.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">1</span>, <span class="at">by=</span><span class="dv">1</span>) <span class="co"># błędny zapis</span></span></code></pre></div>
 <pre><code>## Error in seq.default(10, 1, by = 1): wrong sign in &#39;by&#39; argument</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="struktury-danych.html#cb42-1"></a><span class="kw">seq</span>(<span class="dv">10</span>, <span class="dv">1</span>, <span class="dt">by=</span><span class="op">-</span><span class="dv">1</span>) <span class="co"># poprawny zapis</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="struktury-danych.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">1</span>, <span class="at">by=</span><span class="sc">-</span><span class="dv">1</span>) <span class="co"># poprawny zapis</span></span></code></pre></div>
 <pre><code>##  [1] 10  9  8  7  6  5  4  3  2  1</code></pre>
 <p>Tworzenie wektora w oparciu o argument <code>length.out</code> - funkcja sama dobiera krok:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="struktury-danych.html#cb44-1"></a><span class="kw">seq</span>(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dt">length.out =</span> <span class="dv">13</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="struktury-danych.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">7</span>, <span class="at">length.out =</span> <span class="dv">13</span>)</span></code></pre></div>
 <pre><code>##  [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0 5.5 6.0 6.5 7.0</code></pre>
 <p>Do generowania liczb pseudolosowych służy funkcja <code>runif(n)</code>, która do poprawnego wywołania wymaga tylko jednego argumentu - długości wektora wynikowego. Domyślnie losowane są liczby z przedziału <span class="math inline">\([0;1]\)</span> (tak jak w funkcji <code>los()</code> w Excelu), można to jednak zmienić podając odpowiednie wartości argumentów <code>min</code> i <code>max</code>.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="struktury-danych.html#cb46-1"></a><span class="kw">runif</span>(<span class="dv">6</span>)</span></code></pre></div>
-<pre><code>## [1] 0.380591944 0.365506771 0.118114435 0.725495525 0.279330876 0.007851614</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="struktury-danych.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">6</span>)</span></code></pre></div>
+<pre><code>## [1] 0.2575580 0.6116951 0.3048277 0.7301113 0.8113632 0.8436331</code></pre>
 <p>Obserwacje można także generować z innych rozkładów:</p>
 <ul>
 <li><code>rnorm</code> - rozkład normalny,</li>
@@ -332,67 +335,67 @@ obiekt -&gt; nazwa</code></pre>
 </ul>
 <p>Wykaz wszystkich dostępnych w R rozkładów uzyskamy wywołując polecenie <code>help("Distributions")</code>.</p>
 <p>Za każdym uruchomieniem jednej z wymienionych wyżej funkcji losujących wartości z danego rozkładu otrzymamy inne wartości:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="struktury-danych.html#cb48-1"></a><span class="kw">runif</span>(<span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1] 0.01168621 0.13323132 0.60767185 0.05565719 0.15477605</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="struktury-danych.html#cb50-1"></a><span class="kw">runif</span>(<span class="dv">5</span>)</span></code></pre></div>
-<pre><code>## [1] 0.0190010 0.2113415 0.8838915 0.2674817 0.2572996</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="struktury-danych.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] 0.01749573 0.15259743 0.13177796 0.58879043 0.64654188</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="struktury-danych.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] 0.20302764 0.36587143 0.25513272 0.97434381 0.01977775</code></pre>
 <p>Powtarzalność wyników możemy uzyskać ustalając ziarno generatora:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="struktury-danych.html#cb52-1"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb52-2"><a href="struktury-danych.html#cb52-2"></a><span class="kw">runif</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="struktury-danych.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb52-2"><a href="struktury-danych.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 0.2875775 0.7883051 0.4089769 0.8830174 0.9404673</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="struktury-danych.html#cb54-1"></a><span class="kw">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb54-2"><a href="struktury-danych.html#cb54-2"></a><span class="kw">runif</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="struktury-danych.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb54-2"><a href="struktury-danych.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">runif</span>(<span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 0.2875775 0.7883051 0.4089769 0.8830174 0.9404673</code></pre>
 </div>
 <div id="wektor-wartości-tekstowych" class="section level3" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> Wektor wartości tekstowych</h3>
 <p>W wektorze może być przechowywany tekst - wówczas poszczególne elementy zapisujemy w cudzysłowie lub apostrofach:</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="struktury-danych.html#cb56-1"></a><span class="kw">c</span>(<span class="st">&quot;ala&quot;</span>, <span class="st">&quot;ma&quot;</span>, <span class="st">&quot;kota&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="struktury-danych.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;ala&quot;</span>, <span class="st">&quot;ma&quot;</span>, <span class="st">&quot;kota&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;ala&quot;  &quot;ma&quot;   &quot;kota&quot;</code></pre>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="struktury-danych.html#cb58-1"></a><span class="kw">c</span>(<span class="st">&#39;ala&#39;</span>, <span class="st">&#39;ma&#39;</span>, <span class="st">&#39;kota&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="struktury-danych.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&#39;ala&#39;</span>, <span class="st">&#39;ma&#39;</span>, <span class="st">&#39;kota&#39;</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;ala&quot;  &quot;ma&quot;   &quot;kota&quot;</code></pre>
 <p>W RStudio wygodniej używać cudzysłowu, ponieważ program automatycznie go zamyka.</p>
 <p>Istnieje także stała zawierająca litery alfabetu:</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="struktury-danych.html#cb60-1"></a>letters</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="struktury-danych.html#cb60-1" aria-hidden="true" tabindex="-1"></a>letters</span></code></pre></div>
 <pre><code>##  [1] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; &quot;e&quot; &quot;f&quot; &quot;g&quot; &quot;h&quot; &quot;i&quot; &quot;j&quot; &quot;k&quot; &quot;l&quot; &quot;m&quot; &quot;n&quot; &quot;o&quot; &quot;p&quot; &quot;q&quot; &quot;r&quot; &quot;s&quot;
 ## [20] &quot;t&quot; &quot;u&quot; &quot;v&quot; &quot;w&quot; &quot;x&quot; &quot;y&quot; &quot;z&quot;</code></pre>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="struktury-danych.html#cb62-1"></a>LETTERS</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="struktury-danych.html#cb62-1" aria-hidden="true" tabindex="-1"></a>LETTERS</span></code></pre></div>
 <pre><code>##  [1] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; &quot;F&quot; &quot;G&quot; &quot;H&quot; &quot;I&quot; &quot;J&quot; &quot;K&quot; &quot;L&quot; &quot;M&quot; &quot;N&quot; &quot;O&quot; &quot;P&quot; &quot;Q&quot; &quot;R&quot; &quot;S&quot;
 ## [20] &quot;T&quot; &quot;U&quot; &quot;V&quot; &quot;W&quot; &quot;X&quot; &quot;Y&quot; &quot;Z&quot;</code></pre>
 </div>
 <div id="przeciążanie-wektora" class="section level3" number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> Przeciążanie wektora</h3>
 <p>Jeśli w wektorze pomieszamy kilka typów zmiennych to R przekształci poszczególne wartości, tak aby stracić jak najmniej informacji:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="struktury-danych.html#cb64-1"></a><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="dv">2</span>, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="struktury-danych.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="dv">2</span>, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 1 2 5</code></pre>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="struktury-danych.html#cb66-1"></a><span class="kw">c</span>(<span class="dv">3</span>, <span class="st">&quot;cztery&quot;</span>, <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="struktury-danych.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">3</span>, <span class="st">&quot;cztery&quot;</span>, <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;3&quot;      &quot;cztery&quot; &quot;5&quot;</code></pre>
 <p>W pierwszym przypadku wartość <code>TRUE</code> została przekształcona na odpowiednik liczbowy - 1. Z kolei w drugim przykładzie podane liczby zostały przekonwertowane na tekst.</p>
 </div>
 <div id="operacje-na-wektorach" class="section level3" number="2.2.5">
 <h3><span class="header-section-number">2.2.5</span> Operacje na wektorach</h3>
 <p>Na wektorach logicznych i liczbowych można wykonywać operacje arytmetyczne np. mnożenie:</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="struktury-danych.html#cb68-1"></a><span class="dv">1</span><span class="op">:</span><span class="dv">10</span><span class="op">*</span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="struktury-danych.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span><span class="sc">*</span><span class="dv">2</span></span></code></pre></div>
 <pre><code>##  [1]  2  4  6  8 10 12 14 16 18 20</code></pre>
 <p>Wektor liczbowy plus wektor liczbowy:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="struktury-danych.html#cb70-1"></a><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="struktury-danych.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">+</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##  [1]  2  4  4  6  6  8  8 10 10 12</code></pre>
 <p>Wektor liczbowy razy wektor liczbowy:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="struktury-danych.html#cb72-1"></a><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="op">*</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="struktury-danych.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">*</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>##  [1]  1  4  3  8  5 12  7 16  9 20</code></pre>
 <p>Wektor liczbowy razy wektor logiczny:</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="struktury-danych.html#cb74-1"></a><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="op">*</span><span class="st"> </span><span class="kw">c</span>(T, F)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="struktury-danych.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">*</span> <span class="fu">c</span>(T, F)</span></code></pre></div>
 <pre><code>##  [1] 1 0 3 0 5 0 7 0 9 0</code></pre>
 <p>Długości obu wektorów muszą być odpowiednie:</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="struktury-danych.html#cb76-1"></a><span class="dv">1</span><span class="op">:</span><span class="dv">10</span> <span class="op">*</span><span class="st"> </span><span class="kw">c</span>(T,F,T)</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="struktury-danych.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span> <span class="sc">*</span> <span class="fu">c</span>(T,F,T)</span></code></pre></div>
 <pre><code>## Warning in 1:10 * c(T, F, T): longer object length is not a multiple of shorter
 ## object length</code></pre>
 <pre><code>##  [1]  1  0  3  4  0  6  7  0  9 10</code></pre>
 <p>Dłuższy z wektorów musi być wielokrotnością krótszego.</p>
 <p>Siłą rzeczy działania arytmetyczne na wektorach tekstowych nie są możliwe:</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="struktury-danych.html#cb79-1"></a><span class="kw">c</span>(<span class="st">&quot;jeden&quot;</span>, <span class="st">&quot;dwa&quot;</span>, <span class="st">&quot;trzy&quot;</span>, <span class="st">&quot;cztery&quot;</span>) <span class="op">*</span><span class="st"> </span><span class="kw">c</span>(T,F)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="struktury-danych.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;jeden&quot;</span>, <span class="st">&quot;dwa&quot;</span>, <span class="st">&quot;trzy&quot;</span>, <span class="st">&quot;cztery&quot;</span>) <span class="sc">*</span> <span class="fu">c</span>(T,F)</span></code></pre></div>
 <pre><code>## Error in c(&quot;jeden&quot;, &quot;dwa&quot;, &quot;trzy&quot;, &quot;cztery&quot;) * c(T, F): non-numeric argument to binary operator</code></pre>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="struktury-danych.html#cb81-1"></a><span class="kw">c</span>(<span class="st">&quot;jeden&quot;</span>, <span class="st">&quot;dwa&quot;</span>, <span class="st">&quot;trzy&quot;</span>, <span class="st">&quot;cztery&quot;</span>) <span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="struktury-danych.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">&quot;jeden&quot;</span>, <span class="st">&quot;dwa&quot;</span>, <span class="st">&quot;trzy&quot;</span>, <span class="st">&quot;cztery&quot;</span>) <span class="sc">+</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## Error in c(&quot;jeden&quot;, &quot;dwa&quot;, &quot;trzy&quot;, &quot;cztery&quot;) + c(1, 2): non-numeric argument to binary operator</code></pre>
 </div>
 <div id="operacje-agregujące" class="section level3" number="2.2.6">
@@ -464,99 +467,99 @@ obiekt -&gt; nazwa</code></pre>
 </tbody>
 </table>
 <p>Suma wektora numerycznego:</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="struktury-danych.html#cb83-1"></a><span class="kw">sum</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="struktury-danych.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## [1] 55</code></pre>
 <p>Suma i średnia wektora logicznego:</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="struktury-danych.html#cb85-1"></a><span class="kw">sum</span>(<span class="kw">c</span>(T, F, F, T))</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="struktury-danych.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">c</span>(T, F, F, T))</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="struktury-danych.html#cb87-1"></a><span class="kw">mean</span>(<span class="kw">c</span>(T, F, F, T))</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="struktury-danych.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(T, F, F, T))</span></code></pre></div>
 <pre><code>## [1] 0.5</code></pre>
 <p>Korzystanie z funkcji pochodzących z pakietów zewnętrznych wymaga wskazania skąd pochodzi dana funkcja. Można to zrobić na dwa sposoby: funkcją <code>library(pakiet)</code> - wówczas wszystkie funkcje z tego pakietu są wczytywane do pamięci i można do nich sięgać bezpośrednio lub wskazując przed nazwą funkcji z jakiego pakietu pochodzi.</p>
 <p>Wczytanie pakietu:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="struktury-danych.html#cb89-1"></a><span class="kw">library</span>(e1071)</span>
-<span id="cb89-2"><a href="struktury-danych.html#cb89-2"></a><span class="kw">skewness</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">13</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="struktury-danych.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span>
+<span id="cb89-2"><a href="struktury-danych.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">13</span>))</span></code></pre></div>
 <pre><code>## [1] 0.3451259</code></pre>
 <p>lub równoważnie:</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="struktury-danych.html#cb91-1"></a>e1071<span class="op">::</span><span class="kw">skewness</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">13</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="struktury-danych.html#cb91-1" aria-hidden="true" tabindex="-1"></a>e1071<span class="sc">::</span><span class="fu">skewness</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">11</span>,<span class="dv">13</span>))</span></code></pre></div>
 <pre><code>## [1] 0.3451259</code></pre>
 <p>Podsumowanie rozkładu wektora można także uzyskać z wykorzystaniem funkcji <code>summary(x)</code>:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="struktury-danych.html#cb93-1"></a><span class="kw">summary</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="struktury-danych.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1.00    3.25    5.50    5.50    7.75   10.00</code></pre>
 <p>Działa także na wektorach tekstowych:</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="struktury-danych.html#cb95-1"></a><span class="kw">summary</span>(<span class="kw">c</span>(<span class="st">&quot;jeden&quot;</span>, <span class="st">&quot;dwa&quot;</span>, <span class="st">&quot;trzy&quot;</span>, <span class="st">&quot;cztery&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="struktury-danych.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">c</span>(<span class="st">&quot;jeden&quot;</span>, <span class="st">&quot;dwa&quot;</span>, <span class="st">&quot;trzy&quot;</span>, <span class="st">&quot;cztery&quot;</span>))</span></code></pre></div>
 <pre><code>##    Length     Class      Mode 
 ##         4 character character</code></pre>
 </div>
 <div id="sprawdzanie-typu-wektora" class="section level3" number="2.2.7">
 <h3><span class="header-section-number">2.2.7</span> Sprawdzanie typu wektora</h3>
 <p>Do określenia typu wektora służy funkcja <code>typeof</code>, <code>class</code> lub <code>mode</code>.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="struktury-danych.html#cb97-1"></a><span class="kw">typeof</span>(wart_log)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="struktury-danych.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(wart_log)</span></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
 <p>Sprawdzenie czy obiekt jest danego typu odbywa się z wykorzystaniem dedykowanych funkcji z przyrostkiem <code>is.</code></p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="struktury-danych.html#cb99-1"></a><span class="kw">is.logical</span>(wart_log)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="struktury-danych.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.logical</span>(wart_log)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="struktury-danych.html#cb101-1"></a><span class="kw">is.character</span>(wart_log)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="struktury-danych.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(wart_log)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 </div>
 <div id="rzutowanie-wektorów" class="section level3" number="2.2.8">
 <h3><span class="header-section-number">2.2.8</span> Rzutowanie wektorów</h3>
 <p>Czasami jako np. argument funkcji będzie wymagany inny typ wektora aniżeli aktualnie posiadany w pamięci. Można wówczas spróbować przekształcić taki wektor z wykorzystaniem funkcji rozpoczynającej się od <code>as.</code>:</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="struktury-danych.html#cb103-1"></a><span class="kw">typeof</span>(wart_log)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="struktury-danych.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(wart_log)</span></code></pre></div>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="struktury-danych.html#cb105-1"></a><span class="kw">as.numeric</span>(wart_log)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="struktury-danych.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(wart_log)</span></code></pre></div>
 <pre><code>## [1] 1 0 0</code></pre>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="struktury-danych.html#cb107-1"></a><span class="kw">typeof</span>(<span class="kw">as.numeric</span>(wart_log))</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="struktury-danych.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="fu">as.numeric</span>(wart_log))</span></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 </div>
 <div id="indeksowanie-wektorów" class="section level3" number="2.2.9">
 <h3><span class="header-section-number">2.2.9</span> Indeksowanie wektorów</h3>
 <p>Aby uzyskać dostęp do części wektora korzysta się z indeksatora w postaci nawiasów kwadratowych. Utworzymy nowy wektor zawierający liczby całkowite od 10 do 20:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="struktury-danych.html#cb109-1"></a>wart_<span class="dv">10</span>_<span class="dv">20</span> &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">10</span>,<span class="dv">20</span>)</span>
-<span id="cb109-2"><a href="struktury-danych.html#cb109-2"></a>wart_<span class="dv">10</span>_<span class="dv">20</span></span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="struktury-danych.html#cb109-1" aria-hidden="true" tabindex="-1"></a>wart_10_20 <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span>,<span class="dv">20</span>)</span>
+<span id="cb109-2"><a href="struktury-danych.html#cb109-2" aria-hidden="true" tabindex="-1"></a>wart_10_20</span></code></pre></div>
 <pre><code>##  [1] 10 11 12 13 14 15 16 17 18 19 20</code></pre>
 <p>a następnie wybieramy trzecią obserwację:</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="struktury-danych.html#cb111-1"></a>wart_<span class="dv">10</span>_<span class="dv">20</span>[<span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="struktury-danych.html#cb111-1" aria-hidden="true" tabindex="-1"></a>wart_10_20[<span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <p>Możemy także odwołać się do większego zakresu:</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="struktury-danych.html#cb113-1"></a>wart_<span class="dv">10</span>_<span class="dv">20</span>[<span class="dv">3</span><span class="op">:</span><span class="dv">5</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="struktury-danych.html#cb113-1" aria-hidden="true" tabindex="-1"></a>wart_10_20[<span class="dv">3</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>## [1] 12 13 14</code></pre>
 <p>I wybranych elementów:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="struktury-danych.html#cb115-1"></a>wart_<span class="dv">10</span>_<span class="dv">20</span>[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="struktury-danych.html#cb115-1" aria-hidden="true" tabindex="-1"></a>wart_10_20[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)]</span></code></pre></div>
 <pre><code>## [1] 10 12 14</code></pre>
 <p>W ten sposób można także modyfikować odpowiednie elementy wektora:</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="struktury-danych.html#cb117-1"></a>wart_<span class="dv">10</span>_<span class="dv">20</span>[<span class="dv">7</span>] &lt;-<span class="st"> </span><span class="dv">90</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="struktury-danych.html#cb117-1" aria-hidden="true" tabindex="-1"></a>wart_10_20[<span class="dv">7</span>] <span class="ot">&lt;-</span> <span class="dv">90</span></span></code></pre></div>
 <p>Wybór obserwacji większych od 15:</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="struktury-danych.html#cb118-1"></a>wart_<span class="dv">10</span>_<span class="dv">20</span>[wart_<span class="dv">10</span>_<span class="dv">20</span><span class="op">&gt;</span><span class="dv">15</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="struktury-danych.html#cb118-1" aria-hidden="true" tabindex="-1"></a>wart_10_20[wart_10_20<span class="sc">&gt;</span><span class="dv">15</span>]</span></code></pre></div>
 <pre><code>## [1] 90 17 18 19 20</code></pre>
 <p>Z kolei następujący zapis zwróci nam wektor wartości logicznych:</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="struktury-danych.html#cb120-1"></a>wart_<span class="dv">10</span>_<span class="dv">20</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">15</span></span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="struktury-danych.html#cb120-1" aria-hidden="true" tabindex="-1"></a>wart_10_20 <span class="sc">&gt;</span> <span class="dv">15</span></span></code></pre></div>
 <pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE</code></pre>
 </div>
 <div id="wartości-nieliczbowe" class="section level3" number="2.2.10">
 <h3><span class="header-section-number">2.2.10</span> Wartości nieliczbowe</h3>
 <p>Brak danych w R jest przedstawiany jako wartość <code>NA</code> (ang. <em>not available</em>) i może powodować trudności z wywoływaniem niektórych funkcji:</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="struktury-danych.html#cb122-1"></a>v_na &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="ot">NA</span>,<span class="dv">1</span>)</span>
-<span id="cb122-2"><a href="struktury-danych.html#cb122-2"></a>v_na</span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="struktury-danych.html#cb122-1" aria-hidden="true" tabindex="-1"></a>v_na <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="cn">NA</span>,<span class="dv">1</span>)</span>
+<span id="cb122-2"><a href="struktury-danych.html#cb122-2" aria-hidden="true" tabindex="-1"></a>v_na</span></code></pre></div>
 <pre><code>## [1]  1  2  1 NA  1</code></pre>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="struktury-danych.html#cb124-1"></a><span class="kw">sum</span>(v_na)</span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="struktury-danych.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(v_na)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>W związku z tym większość funkcji ma zaimplementowany dodatkowy argument służący do obsługi tego typu wartości, który najczęściej nie uwzględnia tych wartości w obliczeniach:</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="struktury-danych.html#cb126-1"></a><span class="kw">sum</span>(v_na, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="struktury-danych.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(v_na, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>Oprócz braku danych podczas obliczeń możemy natrafić na wartości nieokreślone <code>NaN</code> (ang. <em>not a number</em>) oraz nieskończone <code>Inf</code> (ang. <em>infinity</em>).</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="struktury-danych.html#cb128-1"></a><span class="dv">0</span><span class="op">/</span><span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="struktury-danych.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span><span class="sc">/</span><span class="dv">0</span></span></code></pre></div>
 <pre><code>## [1] NaN</code></pre>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="struktury-danych.html#cb130-1"></a><span class="dv">1</span><span class="op">/</span><span class="dv">0</span></span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="struktury-danych.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">/</span><span class="dv">0</span></span></code></pre></div>
 <pre><code>## [1] Inf</code></pre>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="struktury-danych.html#cb132-1"></a><span class="kw">sqrt</span>(<span class="op">-</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="struktury-danych.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="sc">-</span><span class="dv">10</span>)</span></code></pre></div>
 <pre><code>## Warning in sqrt(-10): NaNs produced</code></pre>
 <pre><code>## [1] NaN</code></pre>
 <p>W R istnieje także wartość <code>NULL</code>, która jest podstawowym typem danych a nie wartością. <code>NULL</code> można traktować jako odpowiednik zbioru pustego. Jest stosowany np. w funkcjach, które niczego nie zwracają.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="struktury-danych.html#cb135-1"></a>v_null &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="ot">NULL</span>,<span class="dv">1</span>)</span>
-<span id="cb135-2"><a href="struktury-danych.html#cb135-2"></a>v_null</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="struktury-danych.html#cb135-1" aria-hidden="true" tabindex="-1"></a>v_null <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="cn">NULL</span>,<span class="dv">1</span>)</span>
+<span id="cb135-2"><a href="struktury-danych.html#cb135-2" aria-hidden="true" tabindex="-1"></a>v_null</span></code></pre></div>
 <pre><code>## [1] 1 2 1 1</code></pre>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="struktury-danych.html#cb137-1"></a><span class="kw">sum</span>(v_null)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="struktury-danych.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(v_null)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 </div>
 <div id="zadania" class="section level3" number="2.2.11">
@@ -574,32 +577,32 @@ obiekt -&gt; nazwa</code></pre>
 <h2><span class="header-section-number">2.3</span> Macierz</h2>
 <p>Macierze są wykorzystywane w R do przechowywania np. odległości pomiędzy punktami czy wskazywania sąsiedztwa obszarów geograficznych.</p>
 <p>Do tworzenia macierzy służy funkcja <code>matrix</code>:</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="struktury-danych.html#cb139-1"></a>m &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>, <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">ncol=</span><span class="dv">3</span>)</span>
-<span id="cb139-2"><a href="struktury-danych.html#cb139-2"></a>m</span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="struktury-danych.html#cb139-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol=</span><span class="dv">3</span>)</span>
+<span id="cb139-2"><a href="struktury-danych.html#cb139-2" aria-hidden="true" tabindex="-1"></a>m</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    3    5
 ## [2,]    2    4    6</code></pre>
 <p>Z wykorzystaniem wybranych funkcji można sprawdzić wymiary macierzy, liczbę wierszy oraz kolumn:</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="struktury-danych.html#cb141-1"></a><span class="kw">dim</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="struktury-danych.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(m)</span></code></pre></div>
 <pre><code>## [1] 2 3</code></pre>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="struktury-danych.html#cb143-1"></a><span class="kw">ncol</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="struktury-danych.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(m)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="struktury-danych.html#cb145-1"></a><span class="kw">nrow</span>(m)</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="struktury-danych.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(m)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>Macierz może także zawierać tekst:</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="struktury-danych.html#cb147-1"></a><span class="kw">matrix</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>], <span class="dt">nrow=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="struktury-danych.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>], <span class="at">nrow=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,] &quot;a&quot;  &quot;d&quot;  &quot;g&quot; 
 ## [2,] &quot;b&quot;  &quot;e&quot;  &quot;h&quot; 
 ## [3,] &quot;c&quot;  &quot;f&quot;  &quot;i&quot;</code></pre>
 <p>Domyślnie macierz układana jest kolumnami. Aby to zmienić należy dodać argument <code>byrow=TRUE</code>:</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="struktury-danych.html#cb149-1"></a><span class="kw">matrix</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>], <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="struktury-danych.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>], <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,] &quot;a&quot;  &quot;b&quot;  &quot;c&quot; 
 ## [2,] &quot;d&quot;  &quot;e&quot;  &quot;f&quot; 
 ## [3,] &quot;g&quot;  &quot;h&quot;  &quot;i&quot;</code></pre>
 <p>Jeśli liczba elementów wejściowych jest mniejsza iloczyn podanej liczby kolumn i wierszy to w brakujące miejsce wstawiane są elementy z początku wektora wejściowego:</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="struktury-danych.html#cb151-1"></a><span class="kw">matrix</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>], <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="struktury-danych.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">matrix</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>], <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Warning in matrix(letters[1:7], nrow = 3, byrow = TRUE): data length [7] is not
 ## a sub-multiple or multiple of the number of rows [3]</code></pre>
 <pre><code>##      [,1] [,2] [,3]
@@ -607,30 +610,30 @@ obiekt -&gt; nazwa</code></pre>
 ## [2,] &quot;d&quot;  &quot;e&quot;  &quot;f&quot; 
 ## [3,] &quot;g&quot;  &quot;a&quot;  &quot;b&quot;</code></pre>
 <p>Z kolei macierz diagnonalną posiadającą elementy niezerowe wyłącznie na przekątnej tworzy się z wykorzystaniem funkcji <code>diag</code>. Macierz jednostkowa o wymiarach <span class="math inline">\(4 \times 4\)</span>:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="struktury-danych.html#cb154-1"></a><span class="kw">diag</span>(<span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="struktury-danych.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="dv">4</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4]
 ## [1,]    1    0    0    0
 ## [2,]    0    1    0    0
 ## [3,]    0    0    1    0
 ## [4,]    0    0    0    1</code></pre>
 <p>Macierz diagonalna o wartościach 5 na przekątnej i wymiarach <span class="math inline">\(3 \times 3\)</span></p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="struktury-danych.html#cb156-1"></a><span class="kw">diag</span>(<span class="dv">5</span>, <span class="dt">nrow=</span><span class="dv">3</span>, <span class="dt">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="struktury-danych.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="dv">5</span>, <span class="at">nrow=</span><span class="dv">3</span>, <span class="at">ncol=</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    5    0    0
 ## [2,]    0    5    0
 ## [3,]    0    0    5</code></pre>
 <p>Funkcja <code>diag</code> umożliwia także ekstrakcję przekątnej z istniejącej już macierzy:</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="struktury-danych.html#cb158-1"></a><span class="kw">diag</span>(<span class="kw">matrix</span>(letters[<span class="dv">1</span><span class="op">:</span><span class="dv">9</span>], <span class="dt">nrow=</span><span class="dv">3</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="struktury-danych.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diag</span>(<span class="fu">matrix</span>(letters[<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>], <span class="at">nrow=</span><span class="dv">3</span>))</span></code></pre></div>
 <pre><code>## [1] &quot;a&quot; &quot;e&quot; &quot;i&quot;</code></pre>
 <div id="łączenie-macierzy" class="section level3" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> Łączenie macierzy</h3>
 <p>Z wykorzystaniem funkcji <code>rbind</code> i <code>cbind</code> można odpowiednio łączyć obiekty wierszami (ang. <em>row bind</em>) lub kolumnami (ang. <em>col bind</em>):</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="struktury-danych.html#cb160-1"></a><span class="kw">rbind</span>(m, <span class="kw">c</span>(<span class="dv">99</span>, <span class="dv">88</span>, <span class="dv">77</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="struktury-danych.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(m, <span class="fu">c</span>(<span class="dv">99</span>, <span class="dv">88</span>, <span class="dv">77</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    3    5
 ## [2,]    2    4    6
 ## [3,]   99   88   77</code></pre>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="struktury-danych.html#cb162-1"></a><span class="kw">cbind</span>(m, <span class="kw">matrix</span>(<span class="dv">101</span><span class="op">:</span><span class="dv">104</span>, <span class="dt">nrow=</span><span class="dv">2</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="struktury-danych.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(m, <span class="fu">matrix</span>(<span class="dv">101</span><span class="sc">:</span><span class="dv">104</span>, <span class="at">nrow=</span><span class="dv">2</span>))</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    3    5  101  103
 ## [2,]    2    4    6  102  104</code></pre>
@@ -638,23 +641,23 @@ obiekt -&gt; nazwa</code></pre>
 <div id="indeksowanie-macierzy" class="section level3" number="2.3.2">
 <h3><span class="header-section-number">2.3.2</span> Indeksowanie macierzy</h3>
 <p>Dostęp do poszczególnych elementów macierzy odbywa się z wykorzystaniem nawiasów kwadratowych, ale można podać dwie wartość - <code>obiekt[wiersz,kolumna]</code>:</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="struktury-danych.html#cb164-1"></a>m[<span class="dv">2</span>,<span class="dv">1</span>] <span class="co"># drugi wiersz, pierwsza kolumna</span></span></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="struktury-danych.html#cb164-1" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">2</span>,<span class="dv">1</span>] <span class="co"># drugi wiersz, pierwsza kolumna</span></span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="struktury-danych.html#cb166-1"></a>m[<span class="dv">2</span>,]  <span class="co"># tylko drugi wiersz</span></span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="struktury-danych.html#cb166-1" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">2</span>,]  <span class="co"># tylko drugi wiersz</span></span></code></pre></div>
 <pre><code>## [1] 2 4 6</code></pre>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="struktury-danych.html#cb168-1"></a>m[,<span class="dv">1</span>]  <span class="co"># tylko pierwsza kolumna</span></span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="struktury-danych.html#cb168-1" aria-hidden="true" tabindex="-1"></a>m[,<span class="dv">1</span>]  <span class="co"># tylko pierwsza kolumna</span></span></code></pre></div>
 <pre><code>## [1] 1 2</code></pre>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="struktury-danych.html#cb170-1"></a>m[,]   <span class="co"># wszystkie obserwacje</span></span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="struktury-danych.html#cb170-1" aria-hidden="true" tabindex="-1"></a>m[,]   <span class="co"># wszystkie obserwacje</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    3    5
 ## [2,]    2    4    6</code></pre>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="struktury-danych.html#cb172-1"></a>m[]    <span class="co"># wszystkie obserwacje</span></span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="struktury-danych.html#cb172-1" aria-hidden="true" tabindex="-1"></a>m[]    <span class="co"># wszystkie obserwacje</span></span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    3    5
 ## [2,]    2    4    6</code></pre>
 <p>W ten sposób można dokonać modyfikacji konkretnych elementów macierzy:</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="struktury-danych.html#cb174-1"></a>m[<span class="dv">2</span>,<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">77</span></span>
-<span id="cb174-2"><a href="struktury-danych.html#cb174-2"></a>m</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="struktury-danych.html#cb174-1" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">2</span>,<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="dv">77</span></span>
+<span id="cb174-2"><a href="struktury-danych.html#cb174-2" aria-hidden="true" tabindex="-1"></a>m</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    3    5
 ## [2,]   77    4    6</code></pre>
@@ -693,9 +696,9 @@ obiekt -&gt; nazwa</code></pre>
 </tbody>
 </table>
 <p>Rozważmy dwie macierze:</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="struktury-danych.html#cb176-1"></a>a &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>), <span class="dt">nrow =</span> <span class="dv">3</span>)</span>
-<span id="cb176-2"><a href="struktury-danych.html#cb176-2"></a>b &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">6</span><span class="op">:</span><span class="dv">1</span>, <span class="dt">ncol=</span><span class="dv">2</span>)</span>
-<span id="cb176-3"><a href="struktury-danych.html#cb176-3"></a>a;b</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="struktury-danych.html#cb176-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>), <span class="at">nrow =</span> <span class="dv">3</span>)</span>
+<span id="cb176-2"><a href="struktury-danych.html#cb176-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">6</span><span class="sc">:</span><span class="dv">1</span>, <span class="at">ncol=</span><span class="dv">2</span>)</span>
+<span id="cb176-3"><a href="struktury-danych.html#cb176-3" aria-hidden="true" tabindex="-1"></a>a;b</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    2    2    1
 ## [2,]    3    1    3
@@ -705,37 +708,37 @@ obiekt -&gt; nazwa</code></pre>
 ## [2,]    5    2
 ## [3,]    4    1</code></pre>
 <p>Aby przeprowadzić mnożenie macierzy <code>a</code> i <code>b</code>, liczba kolumn macierzy <code>a</code> musi być równa liczbie wierszy w macierzy <code>b</code>. Z kolei rozmiar macierzy wyjściowej to liczba wierszy macierzy <code>a</code> i liczba kolumn macierzy <code>b</code>.</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="struktury-danych.html#cb179-1"></a>a <span class="op">%*%</span><span class="st"> </span>b</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="struktury-danych.html#cb179-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%*%</span> b</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   26   11
 ## [2,]   35   14
 ## [3,]   42   18</code></pre>
 <p>Transpozycja macierzy <code>b</code>:</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="struktury-danych.html#cb181-1"></a><span class="kw">t</span>(b)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="struktury-danych.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(b)</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    6    5    4
 ## [2,]    3    2    1</code></pre>
 <p>Wyznacznik macierzy <code>a</code>:</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="struktury-danych.html#cb183-1"></a><span class="kw">det</span>(a)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="struktury-danych.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">det</span>(a)</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>Macierz odwrotna do macierzy <code>a</code>:</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="struktury-danych.html#cb185-1"></a><span class="kw">solve</span>(a)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="struktury-danych.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(a)</span></code></pre></div>
 <pre><code>##            [,1]       [,2]       [,3]
 ## [1,] -0.6666667 -0.3333333  0.8333333
 ## [2,]  1.0000000  0.0000000 -0.5000000
 ## [3,]  0.3333333  0.6666667 -0.6666667</code></pre>
 <p>Wyznaczenie macierzy <code>x</code> w równaniu <code>a*x=b</code>:</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="struktury-danych.html#cb187-1"></a><span class="kw">solve</span>(a,b)</span></code></pre></div>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="struktury-danych.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(a,b)</span></code></pre></div>
 <pre><code>##           [,1]      [,2]
 ## [1,] -2.333333 -1.833333
 ## [2,]  4.000000  2.500000
 ## [3,]  2.666667  1.666667</code></pre>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="struktury-danych.html#cb189-1"></a>a <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(a,b)</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="struktury-danych.html#cb189-1" aria-hidden="true" tabindex="-1"></a>a <span class="sc">%*%</span> <span class="fu">solve</span>(a,b)</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    6    3
 ## [2,]    5    2
 ## [3,]    4    1</code></pre>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="struktury-danych.html#cb191-1"></a>b</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="struktury-danych.html#cb191-1" aria-hidden="true" tabindex="-1"></a>b</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    6    3
 ## [2,]    5    2
@@ -749,12 +752,12 @@ obiekt -&gt; nazwa</code></pre>
 </ol>
 <p><span class="math display">\[b=(X&#39;X)^{-1}X&#39;y\]</span></p>
 <p>Zmienna <span class="math inline">\(x_1\)</span> przyjmuje wartości <code>2,4,1,6,9,3,2,9,10,7</code>, zmienna <span class="math inline">\(x_2\)</span> <code>1.5,0.2,0.1,2,3.1,1.2,0.4,2.9,2.5,1.9</code>, a zmienna <span class="math inline">\(x_0\)</span> to wektor jedynek. Te trzy zmienne tworzą macierz <span class="math inline">\(X\)</span>. Z kolei wartości zmiennej <span class="math inline">\(y\)</span> są następujące <code>12,15,10,19,26,13,13,21,29,18</code>. Wyznacz wartość <span class="math inline">\(b\)</span>.</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="struktury-danych.html#cb193-1"></a>zad1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>, <span class="dt">nrow=</span><span class="dv">2</span>)</span>
-<span id="cb193-2"><a href="struktury-danych.html#cb193-2"></a><span class="kw">solve</span>(zad1)</span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="struktury-danych.html#cb193-1" aria-hidden="true" tabindex="-1"></a>zad1 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="at">nrow=</span><span class="dv">2</span>)</span>
+<span id="cb193-2"><a href="struktury-danych.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="fu">solve</span>(zad1)</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]   -2  1.5
 ## [2,]    1 -0.5</code></pre>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="struktury-danych.html#cb195-1"></a>zad1 <span class="op">%*%</span><span class="st"> </span><span class="kw">solve</span>(zad1)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="struktury-danych.html#cb195-1" aria-hidden="true" tabindex="-1"></a>zad1 <span class="sc">%*%</span> <span class="fu">solve</span>(zad1)</span></code></pre></div>
 <pre><code>##      [,1] [,2]
 ## [1,]    1    0
 ## [2,]    0    1</code></pre>
@@ -764,32 +767,32 @@ obiekt -&gt; nazwa</code></pre>
 <h2><span class="header-section-number">2.4</span> Czynnik</h2>
 <p>Czynnik (ang. <em>factor</em>) służy do przechowywania danych jakościowych o mało licznej liczbie kategorii, mierzonych na skali nominalnej i porządkowej.</p>
 <p>Rozważmy informacje o wykształceniu:</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="struktury-danych.html#cb197-1"></a>wyk &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;podstawowe&quot;</span>, <span class="st">&quot;średnie&quot;</span>, <span class="st">&quot;wyższe&quot;</span>), <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">2</span>))</span>
-<span id="cb197-2"><a href="struktury-danych.html#cb197-2"></a>wyk</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="struktury-danych.html#cb197-1" aria-hidden="true" tabindex="-1"></a>wyk <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;podstawowe&quot;</span>, <span class="st">&quot;średnie&quot;</span>, <span class="st">&quot;wyższe&quot;</span>), <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb197-2"><a href="struktury-danych.html#cb197-2" aria-hidden="true" tabindex="-1"></a>wyk</span></code></pre></div>
 <pre><code>##  [1] &quot;podstawowe&quot; &quot;podstawowe&quot; &quot;podstawowe&quot; &quot;podstawowe&quot; &quot;podstawowe&quot;
 ##  [6] &quot;średnie&quot;    &quot;średnie&quot;    &quot;średnie&quot;    &quot;wyższe&quot;     &quot;wyższe&quot;</code></pre>
 <p>i dokonajmy transformacji na czynnik:</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="struktury-danych.html#cb199-1"></a>wyk_f &lt;-<span class="st"> </span><span class="kw">factor</span>(wyk)</span>
-<span id="cb199-2"><a href="struktury-danych.html#cb199-2"></a>wyk_f</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="struktury-danych.html#cb199-1" aria-hidden="true" tabindex="-1"></a>wyk_f <span class="ot">&lt;-</span> <span class="fu">factor</span>(wyk)</span>
+<span id="cb199-2"><a href="struktury-danych.html#cb199-2" aria-hidden="true" tabindex="-1"></a>wyk_f</span></code></pre></div>
 <pre><code>##  [1] podstawowe podstawowe podstawowe podstawowe podstawowe średnie   
 ##  [7] średnie    średnie    wyższe     wyższe    
 ## Levels: podstawowe średnie wyższe</code></pre>
 <p>Funkcja <code>summary()</code> wywołana na czynniku zwraca wynik innego typu aniżeli na wektorze tekstowym:</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="struktury-danych.html#cb201-1"></a><span class="kw">summary</span>(wyk)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="struktury-danych.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wyk)</span></code></pre></div>
 <pre><code>##    Length     Class      Mode 
 ##        10 character character</code></pre>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="struktury-danych.html#cb203-1"></a><span class="kw">summary</span>(wyk_f)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="struktury-danych.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(wyk_f)</span></code></pre></div>
 <pre><code>## podstawowe    średnie     wyższe 
 ##          5          3          2</code></pre>
 <p>Jeśli chcemy zaakcentować fakt, że zmienne są mierzone na skali porządkowej dodajemy argument <code>ordered=TRUE</code>:</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="struktury-danych.html#cb205-1"></a>wyk_of &lt;-<span class="st"> </span><span class="kw">factor</span>(wyk, <span class="dt">ordered =</span> <span class="ot">TRUE</span>)</span>
-<span id="cb205-2"><a href="struktury-danych.html#cb205-2"></a>wyk_of</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="struktury-danych.html#cb205-1" aria-hidden="true" tabindex="-1"></a>wyk_of <span class="ot">&lt;-</span> <span class="fu">factor</span>(wyk, <span class="at">ordered =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb205-2"><a href="struktury-danych.html#cb205-2" aria-hidden="true" tabindex="-1"></a>wyk_of</span></code></pre></div>
 <pre><code>##  [1] podstawowe podstawowe podstawowe podstawowe podstawowe średnie   
 ##  [7] średnie    średnie    wyższe     wyższe    
 ## Levels: podstawowe &lt; średnie &lt; wyższe</code></pre>
 <p>W łatwy sposób możemy edytować etykiety:</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="struktury-danych.html#cb207-1"></a><span class="kw">levels</span>(wyk_of) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;pod.&quot;</span>, <span class="st">&quot;śr.&quot;</span>, <span class="st">&quot;wyż.&quot;</span>)</span>
-<span id="cb207-2"><a href="struktury-danych.html#cb207-2"></a>wyk_of</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="struktury-danych.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(wyk_of) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;pod.&quot;</span>, <span class="st">&quot;śr.&quot;</span>, <span class="st">&quot;wyż.&quot;</span>)</span>
+<span id="cb207-2"><a href="struktury-danych.html#cb207-2" aria-hidden="true" tabindex="-1"></a>wyk_of</span></code></pre></div>
 <pre><code>##  [1] pod. pod. pod. pod. pod. śr.  śr.  śr.  wyż. wyż.
 ## Levels: pod. &lt; śr. &lt; wyż.</code></pre>
 <p>Czynniki mają szczególne znaczenie w przypadku tworzenia wykresów, gdy chcemy określić porządek wyświetlania.</p>
@@ -798,8 +801,8 @@ obiekt -&gt; nazwa</code></pre>
 <h2><span class="header-section-number">2.5</span> Lista</h2>
 <p>Listy to ciągi złożone z elementów o dowolnych typach. Mogą przydać się w szczególności przy budowaniu funkcji, które zwracają tylko jedną wartość. Wówczas dane różnego typu mogą być zawarte w takiej liście.</p>
 <p>Tworzenie prostej listy:</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="struktury-danych.html#cb209-1"></a>l &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="ot">TRUE</span>, <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="st">&quot;element tekstowy&quot;</span>)</span>
-<span id="cb209-2"><a href="struktury-danych.html#cb209-2"></a>l</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="struktury-danych.html#cb209-1" aria-hidden="true" tabindex="-1"></a>l <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="cn">TRUE</span>, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="st">&quot;element tekstowy&quot;</span>)</span>
+<span id="cb209-2"><a href="struktury-danych.html#cb209-2" aria-hidden="true" tabindex="-1"></a>l</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] TRUE
 ## 
@@ -809,20 +812,20 @@ obiekt -&gt; nazwa</code></pre>
 ## [[3]]
 ## [1] &quot;element tekstowy&quot;</code></pre>
 <p>Już na pierwszy rzut oka widać bardziej złożoną strukturę listy. W związku z tym odwoływanie do poszczególnych elementów będzie trochę się różnić od wektorów czy macierzy.</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="struktury-danych.html#cb211-1"></a>l[<span class="dv">2</span>] <span class="co"># druga lista</span></span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="struktury-danych.html#cb211-1" aria-hidden="true" tabindex="-1"></a>l[<span class="dv">2</span>] <span class="co"># druga lista</span></span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 1 2 3 4</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="struktury-danych.html#cb213-1"></a>l[[<span class="dv">2</span>]] <span class="co"># zawartość listy</span></span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="struktury-danych.html#cb213-1" aria-hidden="true" tabindex="-1"></a>l[[<span class="dv">2</span>]] <span class="co"># zawartość listy</span></span></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="struktury-danych.html#cb215-1"></a>l[[<span class="dv">2</span>]][<span class="dv">3</span>] <span class="co"># trzeci element wektora drugiej listy</span></span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="struktury-danych.html#cb215-1" aria-hidden="true" tabindex="-1"></a>l[[<span class="dv">2</span>]][<span class="dv">3</span>] <span class="co"># trzeci element wektora drugiej listy</span></span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 <p>Listę można także rozwinąć do wektora z wykorzystaniem funkcji <code>unlist</code>:</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="struktury-danych.html#cb217-1"></a><span class="kw">unlist</span>(l)</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="struktury-danych.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unlist</span>(l)</span></code></pre></div>
 <pre><code>## [1] &quot;TRUE&quot;             &quot;1&quot;                &quot;2&quot;                &quot;3&quot;               
 ## [5] &quot;4&quot;                &quot;element tekstowy&quot;</code></pre>
 <p>Poszczególne elementy listy można nazwać:</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="struktury-danych.html#cb219-1"></a>ln &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">log=</span><span class="ot">TRUE</span>, <span class="dt">num=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="dt">tekst=</span><span class="st">&quot;element tekstowy&quot;</span>)</span>
-<span id="cb219-2"><a href="struktury-danych.html#cb219-2"></a>ln</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="struktury-danych.html#cb219-1" aria-hidden="true" tabindex="-1"></a>ln <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">log=</span><span class="cn">TRUE</span>, <span class="at">num=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>), <span class="at">tekst=</span><span class="st">&quot;element tekstowy&quot;</span>)</span>
+<span id="cb219-2"><a href="struktury-danych.html#cb219-2" aria-hidden="true" tabindex="-1"></a>ln</span></code></pre></div>
 <pre><code>## $log
 ## [1] TRUE
 ## 
@@ -832,22 +835,22 @@ obiekt -&gt; nazwa</code></pre>
 ## $tekst
 ## [1] &quot;element tekstowy&quot;</code></pre>
 <p>Wówczas można uzyskać do nich dostęp poprzez symbol <code>$</code> i podaną nazwę:</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="struktury-danych.html#cb221-1"></a>ln<span class="op">$</span>num</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="struktury-danych.html#cb221-1" aria-hidden="true" tabindex="-1"></a>ln<span class="sc">$</span>num</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="struktury-danych.html#cb223-1"></a>ln[[<span class="dv">2</span>]] <span class="co"># normalne indeksowanie nadal działa</span></span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="struktury-danych.html#cb223-1" aria-hidden="true" tabindex="-1"></a>ln[[<span class="dv">2</span>]] <span class="co"># normalne indeksowanie nadal działa</span></span></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="struktury-danych.html#cb225-1"></a>ln<span class="op">$</span>num[<span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="struktury-danych.html#cb225-1" aria-hidden="true" tabindex="-1"></a>ln<span class="sc">$</span>num[<span class="dv">2</span>]</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 </div>
 <div id="ramka-danych" class="section level2" number="2.6">
 <h2><span class="header-section-number">2.6</span> Ramka danych</h2>
 <p>Ramka danych to tabela, która przypomina tą z Excela zawierająca dane o różnych typach. Tworzona za pomocą funkcji <code>data.frame</code>:</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="struktury-danych.html#cb227-1"></a>df &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">plec=</span><span class="kw">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;k&quot;</span>, <span class="st">&quot;k&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;k&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;m&quot;</span>),</span>
-<span id="cb227-2"><a href="struktury-danych.html#cb227-2"></a>                 <span class="dt">wzrost=</span><span class="kw">c</span>(<span class="dv">173</span>, <span class="dv">170</span>, <span class="dv">163</span>, <span class="dv">178</span>, <span class="dv">169</span>, <span class="dv">180</span>, <span class="dv">175</span>, <span class="ot">NA</span>),</span>
-<span id="cb227-3"><a href="struktury-danych.html#cb227-3"></a>                 <span class="dt">pali=</span><span class="kw">c</span>(T, F, F, F, T, F, <span class="ot">NA</span>, T))</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="struktury-danych.html#cb227-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">plec=</span><span class="fu">c</span>(<span class="st">&quot;m&quot;</span>, <span class="st">&quot;k&quot;</span>, <span class="st">&quot;k&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;k&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;m&quot;</span>, <span class="st">&quot;m&quot;</span>),</span>
+<span id="cb227-2"><a href="struktury-danych.html#cb227-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">wzrost=</span><span class="fu">c</span>(<span class="dv">173</span>, <span class="dv">170</span>, <span class="dv">163</span>, <span class="dv">178</span>, <span class="dv">169</span>, <span class="dv">180</span>, <span class="dv">175</span>, <span class="cn">NA</span>),</span>
+<span id="cb227-3"><a href="struktury-danych.html#cb227-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">pali=</span><span class="fu">c</span>(T, F, F, F, T, F, <span class="cn">NA</span>, T))</span></code></pre></div>
 <p>W RStudio po wybraniu tego obiektu w zakładce <code>Environment</code> pojawia się przyjazne okno do przeglądania oraz poglądowego filtrowania i sortowania danych ze zbioru.</p>
 <p>Możemy zobaczyć podsumowanie całego zbioru wywołując na nim funkcję <code>summary()</code>:</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="struktury-danych.html#cb228-1"></a><span class="kw">summary</span>(df)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="struktury-danych.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(df)</span></code></pre></div>
 <pre><code>##      plec               wzrost         pali        
 ##  Length:8           Min.   :163.0   Mode :logical  
 ##  Class :character   1st Qu.:169.5   FALSE:4        
@@ -857,11 +860,11 @@ obiekt -&gt; nazwa</code></pre>
 ##                     Max.   :180.0                  
 ##                     NA&#39;s   :1</code></pre>
 <p>Ramki danych można indeksować w taki sam sposób jak macierze lub z wykorzystaniem operatora <code>$</code>:</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="struktury-danych.html#cb230-1"></a>df[,<span class="dv">2</span>] <span class="co"># druga kolumna</span></span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="struktury-danych.html#cb230-1" aria-hidden="true" tabindex="-1"></a>df[,<span class="dv">2</span>] <span class="co"># druga kolumna</span></span></code></pre></div>
 <pre><code>## [1] 173 170 163 178 169 180 175  NA</code></pre>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="struktury-danych.html#cb232-1"></a>df<span class="op">$</span>wzrost <span class="co"># kolumna wzrost</span></span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="struktury-danych.html#cb232-1" aria-hidden="true" tabindex="-1"></a>df<span class="sc">$</span>wzrost <span class="co"># kolumna wzrost</span></span></code></pre></div>
 <pre><code>## [1] 173 170 163 178 169 180 175  NA</code></pre>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="struktury-danych.html#cb234-1"></a>df[,<span class="kw">c</span>(<span class="st">&quot;plec&quot;</span>, <span class="st">&quot;pali&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="struktury-danych.html#cb234-1" aria-hidden="true" tabindex="-1"></a>df[,<span class="fu">c</span>(<span class="st">&quot;plec&quot;</span>, <span class="st">&quot;pali&quot;</span>)]</span></code></pre></div>
 <pre><code>##   plec  pali
 ## 1    m  TRUE
 ## 2    k FALSE
@@ -872,7 +875,7 @@ obiekt -&gt; nazwa</code></pre>
 ## 7    m    NA
 ## 8    m  TRUE</code></pre>
 <p>Z kolei do wyboru obserwacji można wykorzystać warunek:</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="struktury-danych.html#cb236-1"></a>df[df<span class="op">$</span>plec<span class="op">==</span><span class="st">&quot;m&quot;</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="struktury-danych.html#cb236-1" aria-hidden="true" tabindex="-1"></a>df[df<span class="sc">$</span>plec<span class="sc">==</span><span class="st">&quot;m&quot;</span>,]</span></code></pre></div>
 <pre><code>##   plec wzrost  pali
 ## 1    m    173  TRUE
 ## 4    m    178 FALSE
@@ -880,13 +883,13 @@ obiekt -&gt; nazwa</code></pre>
 ## 7    m    175    NA
 ## 8    m     NA  TRUE</code></pre>
 <p>Wyodrębnienie informacji o wzroście tylko dla kobiet i wyznaczenie średniej:</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="struktury-danych.html#cb238-1"></a>wzrost_k &lt;-<span class="st"> </span>df<span class="op">$</span>wzrost[df<span class="op">$</span>plec <span class="op">==</span><span class="st"> &quot;k&quot;</span>]</span>
-<span id="cb238-2"><a href="struktury-danych.html#cb238-2"></a>wzrost_k</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="struktury-danych.html#cb238-1" aria-hidden="true" tabindex="-1"></a>wzrost_k <span class="ot">&lt;-</span> df<span class="sc">$</span>wzrost[df<span class="sc">$</span>plec <span class="sc">==</span> <span class="st">&quot;k&quot;</span>]</span>
+<span id="cb238-2"><a href="struktury-danych.html#cb238-2" aria-hidden="true" tabindex="-1"></a>wzrost_k</span></code></pre></div>
 <pre><code>## [1] 170 163 169</code></pre>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="struktury-danych.html#cb240-1"></a><span class="kw">mean</span>(wzrost_k)</span></code></pre></div>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="struktury-danych.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(wzrost_k)</span></code></pre></div>
 <pre><code>## [1] 167.3333</code></pre>
 <p>Widzimy, że dla mężczyzn nie udało się ustalić wszystkich informacji i jeden z nich nie ma podanego wzrostu, a dla drugiego brakuje informacji o paleniu papierosów. Możemy usunąć braki danych w kolumnach korzystając z funkcji <code>complete.cases()</code>:</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="struktury-danych.html#cb242-1"></a>df[<span class="kw">complete.cases</span>(df<span class="op">$</span>wzrost),] <span class="co"># tylko zmienna wzrost</span></span></code></pre></div>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="struktury-danych.html#cb242-1" aria-hidden="true" tabindex="-1"></a>df[<span class="fu">complete.cases</span>(df<span class="sc">$</span>wzrost),] <span class="co"># tylko zmienna wzrost</span></span></code></pre></div>
 <pre><code>##   plec wzrost  pali
 ## 1    m    173  TRUE
 ## 2    k    170 FALSE
@@ -895,7 +898,7 @@ obiekt -&gt; nazwa</code></pre>
 ## 5    k    169  TRUE
 ## 6    m    180 FALSE
 ## 7    m    175    NA</code></pre>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="struktury-danych.html#cb244-1"></a>df[<span class="kw">complete.cases</span>(df),] <span class="co"># wszystkie zmienne</span></span></code></pre></div>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="struktury-danych.html#cb244-1" aria-hidden="true" tabindex="-1"></a>df[<span class="fu">complete.cases</span>(df),] <span class="co"># wszystkie zmienne</span></span></code></pre></div>
 <pre><code>##   plec wzrost  pali
 ## 1    m    173  TRUE
 ## 2    k    170 FALSE
@@ -904,8 +907,8 @@ obiekt -&gt; nazwa</code></pre>
 ## 5    k    169  TRUE
 ## 6    m    180 FALSE</code></pre>
 <p>Zbiory danych przechowywane są także w R i pochodzą z różnych pakietów. Wywołując funkcję <code>data("zbior")</code> ładujemy dany zbiór do pamięci. Do szybkiego podglądu zebranych danych służy funkcja <code>head()</code>, która domyślnie wyświetla 6 pierwszych obserwacji ze zbioru:</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="struktury-danych.html#cb246-1"></a><span class="kw">data</span>(<span class="st">&quot;iris&quot;</span>)</span>
-<span id="cb246-2"><a href="struktury-danych.html#cb246-2"></a><span class="kw">head</span>(iris)</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="struktury-danych.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;iris&quot;</span>)</span>
+<span id="cb246-2"><a href="struktury-danych.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -935,7 +938,6 @@ obiekt -&gt; nazwa</code></pre>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -954,6 +956,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -974,6 +977,10 @@ gitbook.start({
 "text": null
 },
 "download": ["Wawrowski_PPR.pdf", "Wawrowski_PPR.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
