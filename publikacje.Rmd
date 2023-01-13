@@ -49,6 +49,10 @@ Wawrowski, Ł., 2015, _Estymacja zasięgu ubóstwa w podregionach Polski z wykor
 
 # Pozostałe
 
+[Henzel J., Wawrowski Ł., Kubina A., Sikora M. and Wróbel Ł., 2022, _Demand forecasting in the fashion business — an example of customized nearest neighbour and linear mixed model approaches_, 2022 17th Conference on Computer Science and Intelligence Systems (FedCSIS), pp. 61-65, doi: 10.15439/2022F256.](https://ieeexplore.ieee.org/document/9909498)
+
+[Kulis J., Wawrowski Ł., Sędek Ł., Wróbel Ł., Słota Ł., van der Velden VHJ, Szczepański T., Sikora M., 2022, _Machine Learning Based Analysis of Relations between Antigen Expression and Genetic Aberrations in Childhood B-Cell Precursor Acute Lymphoblastic Leukaemia_, Journal of Clinical Medicine, 11(9):2281. https://doi.org/10.3390/jcm11092281](articles/jcm2022.pdf)
+
 [Soniewicki, M., Wawrowski, Ł., 2017, _The use of Knowledge Management Systems in the Polish Private and State Owned Companies_, Journal of Information and Organizational Sciences, 41 (2), s. 263-282.](articles/jios_2017.pdf)
 
 [Łysoń, P., Szymkowiak, M., Wawrowski, Ł., 2016, _Badania porównawcze atrakcyjności turystycznej powiatów z uwzględnieniem ich otoczenia_, Wiadomości Statystyczne, 12, s. 45-57](articles/ws_2016_12.pdf)
