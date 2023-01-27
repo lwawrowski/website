@@ -33,6 +33,8 @@ Wawrowski, Ł., 2015, _Estymacja zasięgu ubóstwa w podregionach Polski z wykor
 
 [Michalak, M., Wawrowski, Ł., Sikora, M., Kurianowicz, R., Kozłowski, A., Białas, A., 2021, _Outlier Detection in Network Traffic Monitoring_, In Proceedings of the 10th International Conference on Pattern Recognition Applications and Methods - Volume 1: ICPRAM, ISBN 978-989-758-486-2, s. 523-530, DOI: 10.5220/0010238205230530](articles/icpram_2021.pdf)
 
+[Adamczyk, B., Brzȩczek, M., Michalak, M., Kostorz, I., Wawrowski, Ł., Hermansa, M., Czerwiński, M., Jamiołkowski, A., 2022, _Dataset Generation Framework for Evaluation of IoT Linux Host–Based Intrusion Detection Systems_, 2022 IEEE International Conference on Big Data, 6179-6187, DOI: 10.1109/BigData55660.2022.10020442](https://ieeexplore.ieee.org/document/10020442)
+
 # Estymacja dla małych przedsiębiorstw
 
 [Dehnel, G., Wawrowski, Ł., 2020, _Robust estimation of wages in small enterprises: the application to Poland’s districts_, Statistics in Transition new series, vol. 21 (1), s. 137-157](articles/sit_2020.pdf)
